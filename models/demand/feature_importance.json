@@ -1,0 +1,99 @@
+{
+  "explanation_method": "TreeSHAP (shap.TreeExplainer)",
+  "sample_size": 2000,
+  "base_value": 6829.58,
+  "feature_ranking": [
+    {
+      "feature": "Sales_lag_14",
+      "mean_abs_shap": 691.1764
+    },
+    {
+      "feature": "Promo",
+      "mean_abs_shap": 680.4171
+    },
+    {
+      "feature": "Sales_lag_28",
+      "mean_abs_shap": 467.9684
+    },
+    {
+      "feature": "Sales_lag_1",
+      "mean_abs_shap": 376.5231
+    },
+    {
+      "feature": "Sales_rolling_mean_14",
+      "mean_abs_shap": 367.1347
+    },
+    {
+      "feature": "Sales_rolling_std_7",
+      "mean_abs_shap": 215.4389
+    },
+    {
+      "feature": "Day",
+      "mean_abs_shap": 152.4557
+    },
+    {
+      "feature": "Sales_rolling_mean_7",
+      "mean_abs_shap": 131.5403
+    },
+    {
+      "feature": "DayOfWeek",
+      "mean_abs_shap": 130.4604
+    },
+    {
+      "feature": "Sales_lag_7",
+      "mean_abs_shap": 124.8824
+    },
+    {
+      "feature": "WeekOfYear",
+      "mean_abs_shap": 42.5274
+    },
+    {
+      "feature": "IsMonthEnd",
+      "mean_abs_shap": 35.9836
+    },
+    {
+      "feature": "Promo2Active",
+      "mean_abs_shap": 27.0351
+    },
+    {
+      "feature": "Month",
+      "mean_abs_shap": 24.0983
+    },
+    {
+      "feature": "StoreType_Encoded",
+      "mean_abs_shap": 18.8525
+    },
+    {
+      "feature": "SchoolHoliday",
+      "mean_abs_shap": 13.8579
+    },
+    {
+      "feature": "Assortment_Encoded",
+      "mean_abs_shap": 12.9655
+    },
+    {
+      "feature": "Promo2",
+      "mean_abs_shap": 11.5515
+    },
+    {
+      "feature": "LogCompetitionDistance",
+      "mean_abs_shap": 11.3759
+    },
+    {
+      "feature": "IsWeekend",
+      "mean_abs_shap": 7.1239
+    },
+    {
+      "feature": "IsMonthStart",
+      "mean_abs_shap": 1.6959
+    },
+    {
+      "feature": "StateHoliday_Encoded",
+      "mean_abs_shap": 1.1855
+    },
+    {
+      "feature": "CompetitionOpen",
+      "mean_abs_shap": 0.5932
+    }
+  ]
+}

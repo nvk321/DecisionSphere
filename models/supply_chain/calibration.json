@@ -1,0 +1,64 @@
+{
+  "method": "sigmoid",
+  "calibration_partition": "validation (strict chronological 2017-01 to 2017-06)",
+  "validation_raw_brier": 0.1882,
+  "validation_calibrated_brier": 0.1898,
+  "validation_raw_ece": 0.0196,
+  "validation_calibrated_ece": 0.0435,
+  "test_raw_brier": 0.1807,
+  "test_calibrated_brier": 0.1818,
+  "test_raw_ece": 0.0128,
+  "test_calibrated_ece": 0.0324,
+  "test_calibration_curve_raw": {
+    "fraction_of_positives": [
+      0.0,
+      0.4,
+      0.3296,
+      0.3589,
+      0.406,
+      0.4974,
+      0.6956,
+      0.7861,
+      0.8085,
+      0.9897
+    ],
+    "mean_predicted_value": [
+      0.021,
+      0.1783,
+      0.277,
+      0.3587,
+      0.4224,
+      0.5404,
+      0.6705,
+      0.7644,
+      0.837,
+      0.9891
+    ]
+  },
+  "test_calibration_curve_calibrated": {
+    "fraction_of_positives": [
+      0.0,
+      0.3333,
+      0.3206,
+      0.3676,
+      0.4057,
+      0.4158,
+      0.7355,
+      0.7202,
+      0.8064,
+      0.9994
+    ],
+    "mean_predicted_value": [
+      0.0889,
+      0.186,
+      0.2746,
+      0.357,
+      0.4251,
+      0.5411,
+      0.669,
+      0.7537,
+      0.8411,
+      0.9277
+    ]
+  }
+}

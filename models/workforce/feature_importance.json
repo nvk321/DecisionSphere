@@ -1,0 +1,229 @@
+{
+  "dataset": "IBM HR Analytics Employee Attrition",
+  "method": "TreeSHAP",
+  "evaluation_partition": "Test Holdout (N=221, random_state=42)",
+  "sample_size": 221,
+  "epistemic_tier": "PREDICTED",
+  "high_level_feature_importance": [
+    {
+      "feature": "OverTime",
+      "mean_abs_shap": 0.445041
+    },
+    {
+      "feature": "StockOptionLevel",
+      "mean_abs_shap": 0.343362
+    },
+    {
+      "feature": "MonthlyIncome",
+      "mean_abs_shap": 0.269803
+    },
+    {
+      "feature": "Age",
+      "mean_abs_shap": 0.241322
+    },
+    {
+      "feature": "JobRole",
+      "mean_abs_shap": 0.239764
+    },
+    {
+      "feature": "YearsWithCurrManager",
+      "mean_abs_shap": 0.239029
+    },
+    {
+      "feature": "NumCompaniesWorked",
+      "mean_abs_shap": 0.182314
+    },
+    {
+      "feature": "EnvironmentSatisfaction",
+      "mean_abs_shap": 0.154535
+    },
+    {
+      "feature": "RelationshipSatisfaction",
+      "mean_abs_shap": 0.153976
+    },
+    {
+      "feature": "JobSatisfaction",
+      "mean_abs_shap": 0.142248
+    },
+    {
+      "feature": "Department",
+      "mean_abs_shap": 0.137538
+    },
+    {
+      "feature": "DistanceFromHome",
+      "mean_abs_shap": 0.125688
+    },
+    {
+      "feature": "BusinessTravel",
+      "mean_abs_shap": 0.119511
+    },
+    {
+      "feature": "WorkLifeBalance",
+      "mean_abs_shap": 0.094059
+    },
+    {
+      "feature": "YearsAtCompany",
+      "mean_abs_shap": 0.090376
+    },
+    {
+      "feature": "YearsSinceLastPromotion",
+      "mean_abs_shap": 0.072862
+    },
+    {
+      "feature": "YearsInCurrentRole",
+      "mean_abs_shap": 0.066937
+    },
+    {
+      "feature": "TotalWorkingYears",
+      "mean_abs_shap": 0.064204
+    },
+    {
+      "feature": "DailyRate",
+      "mean_abs_shap": 0.056804
+    },
+    {
+      "feature": "HourlyRate",
+      "mean_abs_shap": 0.053649
+    },
+    {
+      "feature": "MonthlyRate",
+      "mean_abs_shap": 0.051028
+    },
+    {
+      "feature": "Education",
+      "mean_abs_shap": 0.045384
+    },
+    {
+      "feature": "JobInvolvement",
+      "mean_abs_shap": 0.043222
+    },
+    {
+      "feature": "PercentSalaryHike",
+      "mean_abs_shap": 0.030946
+    },
+    {
+      "feature": "Gender",
+      "mean_abs_shap": 0.027972
+    },
+    {
+      "feature": "TrainingTimesLastYear",
+      "mean_abs_shap": 0.024608
+    },
+    {
+      "feature": "MaritalStatus",
+      "mean_abs_shap": 0.023544
+    },
+    {
+      "feature": "JobLevel",
+      "mean_abs_shap": 0.016317
+    },
+    {
+      "feature": "PerformanceRating",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "EducationField",
+      "mean_abs_shap": 0.0
+    }
+  ],
+  "top_encoded_features": [
+    {
+      "encoded_feature": "cat__OverTime_No",
+      "mean_abs_shap": 0.347095
+    },
+    {
+      "encoded_feature": "num__StockOptionLevel",
+      "mean_abs_shap": 0.343362
+    },
+    {
+      "encoded_feature": "num__MonthlyIncome",
+      "mean_abs_shap": 0.269803
+    },
+    {
+      "encoded_feature": "num__Age",
+      "mean_abs_shap": 0.241322
+    },
+    {
+      "encoded_feature": "num__YearsWithCurrManager",
+      "mean_abs_shap": 0.239029
+    },
+    {
+      "encoded_feature": "num__NumCompaniesWorked",
+      "mean_abs_shap": 0.182314
+    },
+    {
+      "encoded_feature": "num__EnvironmentSatisfaction",
+      "mean_abs_shap": 0.154535
+    },
+    {
+      "encoded_feature": "num__RelationshipSatisfaction",
+      "mean_abs_shap": 0.153976
+    },
+    {
+      "encoded_feature": "num__JobSatisfaction",
+      "mean_abs_shap": 0.142248
+    },
+    {
+      "encoded_feature": "num__DistanceFromHome",
+      "mean_abs_shap": 0.125688
+    },
+    {
+      "encoded_feature": "cat__OverTime_Yes",
+      "mean_abs_shap": 0.097946
+    },
+    {
+      "encoded_feature": "num__WorkLifeBalance",
+      "mean_abs_shap": 0.094059
+    },
+    {
+      "encoded_feature": "cat__JobRole_Research Scientist",
+      "mean_abs_shap": 0.091937
+    },
+    {
+      "encoded_feature": "num__YearsAtCompany",
+      "mean_abs_shap": 0.090376
+    },
+    {
+      "encoded_feature": "cat__Department_Sales",
+      "mean_abs_shap": 0.088515
+    },
+    {
+      "encoded_feature": "cat__BusinessTravel_Travel_Frequently",
+      "mean_abs_shap": 0.076343
+    },
+    {
+      "encoded_feature": "num__YearsSinceLastPromotion",
+      "mean_abs_shap": 0.072862
+    },
+    {
+      "encoded_feature": "num__YearsInCurrentRole",
+      "mean_abs_shap": 0.066937
+    },
+    {
+      "encoded_feature": "num__TotalWorkingYears",
+      "mean_abs_shap": 0.064204
+    },
+    {
+      "encoded_feature": "num__DailyRate",
+      "mean_abs_shap": 0.056804
+    }
+  ],
+  "stability_analysis": {
+    "top5_split1": [
+      "OverTime",
+      "StockOptionLevel",
+      "Age",
+      "YearsWithCurrManager",
+      "MonthlyIncome"
+    ],
+    "top5_split2": [
+      "OverTime",
+      "StockOptionLevel",
+      "MonthlyIncome",
+      "JobRole",
+      "Age"
+    ],
+    "top5_concordance": "4/5",
+    "interpretation": "Feature rankings reflect empirical TreeSHAP attribution magnitude on the holdout test set. Rankings represent statistical associations conditioned on the model architecture."
+  }
+}
