@@ -1,0 +1,37 @@
+# Git and IDE
+.git/
+.gitignore
+.gitattributes
+.agents/
+.gemini/
+.idea/
+.vscode/
+
+# Python caches and virtual environments
+.venv/
+venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Legacy reference archives and large ZIP archives (NEVER copy into container)
+reference/
+data/*.zip
+*.zip
+
+# Scratch and log artifacts
+*.log
+scratch/
+docs/
+
+# Local environment secrets (must not be baked into image)
+.env
+.env.local

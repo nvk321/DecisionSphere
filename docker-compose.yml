@@ -1,0 +1,67 @@
+# ==============================================================================
+# DecisionSphere — Enterprise Multi-Container Orchestration
+# Services:
+#   1. db:      PostgreSQL 16 Relational Store (System of Record)
+#   2. backend: FastAPI Analytical Backend & Multi-Domain Simulation Engine
+# ==============================================================================
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: decisionsphere-db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-decisionsphere}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      # SECURITY NOTICE: Default password is for local review/development evaluation only.
+      # For staging/production deployments, supply strong external secrets via environment or vault.
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-decisionsphere}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+    restart: unless-stopped
+    networks:
+      - decisionsphere-net
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: decisionsphere-backend
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    environment:
+      # Database connection string constructed from db service host
+      DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@db:5432/${POSTGRES_DB:-decisionsphere}
+      APP_ENV: ${APP_ENV:-production}
+      DEBUG: ${DEBUG:-false}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      LOG_JSON: ${LOG_JSON:-true}
+      CORS_ORIGINS: '["http://localhost:3000","http://localhost:5173","http://127.0.0.1:3000","http://127.0.0.1:5173"]'
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/api/v1/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 25s
+    restart: unless-stopped
+    networks:
+      - decisionsphere-net
+
+volumes:
+  postgres_data:
+    name: decisionsphere-postgres-data
+
+networks:
+  decisionsphere-net:
+    name: decisionsphere-network
+    driver: bridge
