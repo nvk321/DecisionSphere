@@ -2,135 +2,214 @@
 
 [![Academic Project](https://img.shields.io/badge/Course-BCSE497J%20Project--I-blue.svg)](https://vit.ac.in/)
 [![SDG Alignment](https://img.shields.io/badge/SDG-9%20Industry%2C%20Innovation%20%26%20Infrastructure-orange.svg)](#)
-[![TRL](https://img.shields.io/badge/TRL-Level%202%20%E2%86%92%20Target%204-green.svg)](#)
-[![Python](https://img.shields.io/badge/Python-3.13%2B-blue.svg)](#)
+[![TRL 4](https://img.shields.io/badge/TRL-Level%204%20(Laboratory%20Validated)-brightgreen.svg)](#)
+[![Python 3.13+](https://img.shields.io/badge/Python-3.13%2B-blue.svg)](#)
 [![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688.svg)](#)
-[![React](https://img.shields.io/badge/Frontend-React%20%2B%20TypeScript-61DAFB.svg)](#)
+[![Next.js 15](https://img.shields.io/badge/Frontend-Next.js%2015%20%2B%20React%2019-black.svg)](#)
+[![Tests Passing](https://img.shields.io/badge/Tests-236%20Passing-success.svg)](#)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-DecisionSphere is an AI-powered strategic planning and risk evaluation platform designed to help enterprise decision-makers evaluate the cross-domain impacts of strategic business decisions **before** real-world implementation.
-
----
-
-## 1. Project Metadata & Governance (LOCKED)
-
-- **Project Title:** `DecisionSphere: A Scenario-Based Strategic Planning and Risk Evaluation Platform`
-- **Course Code & Title:** BCSE497J – Project I
-- **Department:** School of Computer Science and Engineering (SCOPE)
-- **Institution:** Vellore Institute of Technology (VIT)
-- **Faculty Guide:** Dr. Suresh A
-- **Student Investigators:**
-  - P Naga Venkata Kushal (Reg No: 23BDS0133)
-  - P Manjunatha Kumar Tejas (Reg No: 23BCE0584)
-  - Jeswanth Reddy Sagabala (Reg No: 23BCE0203)
-- **Title Lock:** The project title was finalized and approved in **Review 1 (29-07-2026)** and is strictly locked.
+**DecisionSphere** is an AI-powered decision intelligence platform that allows enterprise leaders to simulate and evaluate hypothetical business decisions across interconnected operational domains **before** real-world capital deployment.
 
 ---
 
-## 2. Core Project Concept
+## 1. Executive Summary
 
-Instead of evaluating business departments in isolated silos or relying solely on retrospective analytics, DecisionSphere allows leadership to construct hypothetical **"what-if" operational scenarios** and evaluate their cascading systemic consequences:
+| Dimension | Specification |
+|---|---|
+| **Core Problem** | Operational analytics systems operate in isolated silos (sales, logistics, HR), failing to anticipate the cross-domain cascading risks of commercial decisions. |
+| **Three ML Domains** | **1. Retail Demand Forecasting** (Rossmann) $\cdot$ **2. Logistics Delivery Risk** (DataCo) $\cdot$ **3. Workforce Attrition** (IBM HR). |
+| **Main Innovation** | A 13-stage linear execution pipeline linking calibrated ML models to deterministic managerial accounting ($\Delta \Pi$) and a rule-grounded recommendation engine (RULE-01 to RULE-07). |
+| **Anti-Hallucination** | **Zero LLM arithmetic.** All financial metrics and risk scores are calculated deterministically; ML models are calibrated using Sigmoid Platt scaling. |
+| **Verified Canonical Result** | $+15.0\%$ Demand Shock with active promo and $40.0\%$ overtime yields $+\$26,710.78$ revenue but triggers $+\$469,188.49$ logistics disruption and $+\$184,212.00$ labor strain $\to$ **Net Profit Delta $-\$642,716.18$** $\to$ **`REJECT_RESTRUCTURE`** (CRS: $37.48$). |
 
-$$\text{Promotional Demand Surge} \longrightarrow \text{Supply Chain Shipping Delays} \longrightarrow \text{Workforce Overtime \& Attrition} \longrightarrow \text{Bottom-Line Profit Impact}$$
-
-### Conceptual Workflow
 ```
-User Scenario Builder (Hypothetical Levers)
-                 │
-                 ▼
-          Scenario Engine
-                 │
-   ┌─────────────┼─────────────┐
-   ▼             ▼             ▼
- Demand     Supply Chain   Workforce
-Forecast    Risk Model     Risk Model
-   │             │             │
-   └─────────────┼─────────────┘
-                 ▼
-      Business Impact Analysis
-   (Revenue, Penalties, Margins)
-                 │
-                 ▼
-       Recommendation Engine
-   (Explainable Mitigations)
-                 │
-                 ▼
-        Decision Dashboard
+Commercial Demand Surge ──> Logistics Delivery Strain ──> Workforce Overtime & Attrition ──> Bottom-Line Profit Collapse
 ```
 
 ---
 
-## 3. System Architecture & Tech Stack
+## 2. System Architecture
 
-- **Frontend Client:** React + TypeScript (Vite), Vanilla CSS design system, Interactive charting (Recharts / Chart.js).
-- **Backend Services:** FastAPI (Python 3.13+) with Pydantic v2 data contracts.
-- **Relational Database:** PostgreSQL (SQLAlchemy ORM) for scenarios, simulation runs, and impact logs.
-- **Data & Machine Learning:** Python (`pandas`, `numpy`, `scikit-learn`, `scipy`, `xgboost`, `shap`).
-- **Explainability (XAI):** TreeSHAP for global and local risk feature attribution.
+```
+User Scenario Builder (Hypothetical Levers: ΔD, Promo, SLA, Overtime)
+                         │
+                         ▼
+        FastAPI REST API & Scenario Engine
+                         │
+        ┌────────────────┼────────────────┐
+        ▼                ▼                ▼
+   Retail Demand    Supply Chain      Workforce
+    Forecasting      Risk Model       Risk Model
+  (XGBoost / WAPE) (Calibrated AUC) (Calibrated AUC)
+        │                │                │
+        └────────────────┼────────────────┘
+                         ▼
+             Managerial Accounting Engine
+    (Realized Revenue, COGS, Logistics Penalty, Overtime Wages)
+                         │
+                         ▼
+        Composite Risk Score & Recommendation Engine
+            (Lexicographic Rules RULE-01 to RULE-07)
+                         │
+                         ▼
+      Next.js Interactive Decision Intelligence UI
+```
 
 ---
 
-## 4. Repository Structure
+## 3. Quick Start
+
+### Prerequisites
+- Python 3.13+ with virtual environment tools
+- Node.js 20+ and npm
+- Git
+
+### Option A: Local Development Environment
+```bash
+# 1. Clone repository
+git clone https://github.com/DecisionSphere/DecisionSphere.git
+cd DecisionSphere
+
+# 2. Set up Python backend & analytical core
+python -m venv .venv
+source .venv/bin/activate       # On Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+
+# 3. Launch FastAPI backend (Port 8000)
+uvicorn backend.app.main:app --port 8000 --reload
+
+# 4. In a separate terminal, launch Next.js frontend (Port 3000)
+cd frontend
+npm install
+npm run dev
+```
+Open **`http://localhost:3000`** in your browser to access the dashboard.
+
+### Option B: Docker Container Stack
+```bash
+docker-compose up --build
+```
+
+---
+
+## 4. Repository Directory Structure
 
 ```
 DecisionSphere/
-├── AGENTS.md                  # Mandatory AI agent operational protocol & rules
-├── README.md                  # Master project documentation
-├── requirements.txt           # Python dependencies (UTF-8 normalized)
-├── .gitignore                 # Version control exclusion rules
+├── README.md                          # Master navigation & quick start (this file)
+├── LICENSE / CITATION.cff             # Academic attribution & open-source licensing
+├── requirements.txt                   # Frozen Python dependencies
+├── alembic.ini / Dockerfile           # Production containerization assets
 │
-├── docs/                      # Architectural source-of-truth documents
-│   ├── project-overview.md
-│   ├── problem-statement.md
-│   ├── scope.md
-│   ├── anti-goals.md
-│   ├── architecture.md
-│   ├── data-pipeline.md
-│   ├── data-contracts.md
-│   ├── ml-problem-definition.md
-│   ├── ml-evaluation-strategy.md
-│   ├── xai-strategy.md
-│   ├── scenario-engine.md
-│   ├── business-impact-analysis.md
-│   ├── recommendation-engine.md
-│   ├── implementation-roadmap.md
-│   ├── current-state.md
-│   ├── assumptions-and-open-questions.md
-│   └── architecture-decisions/
-│       └── ADR-001-initial-architecture.md
+├── src/                               # [FROZEN] Analytical core (models, scenario, business)
+├── models/                            # [FROZEN] Pre-trained serialized estimators & TreeSHAP
 │
-├── university_reviews/        # Official academic review management
-│   ├── reviews-overview.md    # Master university schedule & rubrics
-│   ├── REVIEW 1/              # Review 1 presentation, approved scope & notes
-│   │   ├── Review 1 - DecisionSphere.pptx
-│   │   └── review-1.md
-│   └── REVIEW 2/              # Review 2 guidelines, report template & checklist
-│       ├── 1 Guidelines Student Project-1 review-2.docx
-│       ├── 3 BCSE497J Project I Report - Template.docx
-│       ├── 4 Review 2 PPT Template.pptx
-│       └── review-2.md
+├── backend/                           # Production FastAPI REST backend (101 unit tests)
+│   ├── app/                           # API routes, Pydantic v2 schemas, services, ORM
+│   └── tests/                         # Backend integration & route test suite
 │
-├── data/                      # Data layer (raw datasets gitignored)
-│   ├── raw/
-│   ├── processed/
-│   └── README.md
+├── frontend/                          # Next.js 15 + React 19 single-page app (35 tests)
+│   ├── src/app/                       # 12 static/dynamic routes (Dashboard, Simulate, etc.)
+│   └── src/components/                # DecisionHero, FinancialWaterfall, RiskGauge, etc.
 │
-└── reference/                 # Immutable historical reference archives & benchmarks
+├── docs/                              # Authoritative system documentation (9 master docs)
+│   ├── project-guide.md               # Beginner-friendly comprehensive walkthrough
+│   ├── architecture.md                # System component boundaries & execution flow
+│   ├── methodology.md                 # Scientific methodology, models, and calibration
+│   ├── assumptions-limitations.md     # All modeling assumptions (ASM-001 to 008)
+│   ├── reproducibility.md             # End-to-end reproduction instructions
+│   ├── glossary.md                    # Epistemic hierarchy & domain terminology
+│   ├── frontend-research-mapping.md   # Mathematical trace from UI to backend formulas
+│   ├── number-lineage.md              # Reconciled canonical worked numbers
+│   └── architecture-decisions/        # Architectural Decision Records (ADR-002 to 006)
+│
+├── paper/                             # IEEE publication manuscript suite
+│   ├── DecisionSphere_Research_Paper.tex # IEEEtran conference manuscript (15 sections)
+│   ├── references.bib                 # Verified BibTeX bibliography (12 primary citations)
+│   ├── figures/                       # High-resolution 300 DPI publication plots
+│   └── README.md                      # Overleaf & local compilation instructions
+│
+├── university_reviews/
+│   ├── REVIEW_1/                      # Review 1 slides and summary
+│   └── REVIEW_2/                      # Review 2 deliverable package (BCSE497J)
+│       ├── requirements.md            # Official evaluation rubrics mapping
+│       ├── evidence-matrix.md         # Traceability matrix (all marked PASS)
+│       ├── presentation-outline.md    # 24-slide PPT blueprint with speaking cues
+│       ├── demo-checklist.md          # Step-by-step live viva demonstration runbook
+│       ├── viva-questions.md          # Exhaustive examiner defense Q&A
+│       └── final-status.md            # Readiness sign-off declaration
+│
+├── notebooks/                         # 16 executable research notebooks (00_ to 15_)
+├── artifacts/figures/                 # 15 canonical generated 300 DPI figures
+├── data/                              # Dataset manifests & provenance metadata
+├── tests/                             # Analytical core & research tests (100 tests)
+├── scripts/                           # Execution, auditing, and reproduction utilities
+└── archive/                           # Preserved historical development records
 ```
 
 ---
 
-## 5. Development Status & Next Steps
+## 5. Automated Testing & Quality Gates
 
-- **Current Milestone:** Phase 0 (Project Initialization & Foundation) — **COMPLETED**
-- **Target Review:** Review 2 (Scheduled September 2026, 60–75% functional prototype)
-- **Immediate Next Task (Phase 1):** Execute automated dataset profiling and audit across candidate retail demand, DataCo supply chain, and IBM HR datasets to finalize features, prevent lookahead leakage, and select the primary demand forecasting dataset.
+DecisionSphere maintains a **100% passing test record (236/236 tests)**:
+```bash
+# 1. Analytical core & research suite (100 tests)
+pytest tests/
+
+# 2. FastAPI backend & API contracts (101 tests)
+pytest backend/tests/
+
+# 3. Frontend unit & component tests (35 tests)
+cd frontend && npm test -- --run
+
+# 4. Frontend production static build (12 routes)
+cd frontend && npm run build
+```
 
 ---
 
-## 6. Engineering & Academic Standards
+## 6. Academic Reproducibility & Research Artifacts
 
-All contributors and AI agents must strictly follow the protocols established in [AGENTS.md](file:///d:/Projects/DecisionSphere/AGENTS.md):
-1. **Source of Truth Hierarchy:** University Guidelines > Guide Approvals > Project Documentation > Verified Code > Hypotheses.
-2. **Anti-Hallucination:** No fabricated citations, accuracy claims, or non-existent dataset attributes.
-3. **Traceability:** All financial and operational impact figures are derived from deterministic equations.
-4. **Git Discipline:** Conventional atomic commits (`feat:`, `docs:`, `chore:`, `test:`).
+- **Jupyter Research Suite:** All 16 notebooks in `notebooks/` run sequentially without manual intervention.
+- **Model Cryptographic Hashes (Gate H):**
+  - `demand_model.joblib`: `fb438c03a742202657bb4ef9196ff17e004bc090e99218f02985dc7720f41941`
+  - `supply_chain_model.joblib`: `0052e641cf355257abb332703c3e6a46c65e9ab10a975227d83cf77d7e689b59`
+  - `workforce_model.joblib`: `4b195c7bee3ab8f4afe75ccd0c75fff0c8e18b9fca88a00305e165a010109918`
+- **Canonical Scenario Extraction:**
+  ```bash
+  python scripts/get_canonical_run_metrics.py
+  ```
+
+---
+
+## 7. Limitations & Epistemic Demarcation
+
+1. **Non-Causal Associations:** Machine learning models estimate conditional statistical associations ($P(Y \mid X)$), not causal mechanisms. Cross-domain interactions represent parameterized operational hypotheses.
+2. **Benchmark Testbeds:** Models are calibrated on public benchmarks (Rossmann, DataCo, IBM HR) as proof-of-concept testbeds rather than a single enterprise ERP database.
+3. **Inelastic Immediate Buffers:** Models assume operational capacity cannot expand instantaneously without incurring contractual delay penalties and overtime wage multipliers.
+
+---
+
+## 8. Academic Governance & Citation
+
+- **Course:** BCSE497J – Project I, School of Computer Science and Engineering (SCOPE), VIT
+- **Faculty Guide:** Dr. Suresh A
+- **Investigators:** P Naga Venkata Kushal (23BDS0133), P Manjunatha Kumar Tejas (23BCE0584), Jeswanth Reddy Sagabala (23BCE0203)
+- **Title Lock Status:** Final and locked since Review 1 (29-07-2026).
+
+If you reference or utilize this work, please cite:
+```bibtex
+@misc{decisionsphere2026,
+  author = {P, Naga Venkata Kushal and P, Manjunatha Kumar Tejas and Jeswanth Reddy, Sagabala and A, Suresh},
+  title  = {DecisionSphere: A Scenario-Based Strategic Planning and Risk Evaluation Platform},
+  year   = {2026},
+  url    = {https://github.com/DecisionSphere/DecisionSphere}
+}
+```
+
+---
+
+## 9. License
+
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
