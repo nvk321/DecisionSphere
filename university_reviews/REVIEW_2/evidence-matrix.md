@@ -1,0 +1,42 @@
+# Review 2 — Evidence Matrix & Verification Traceability
+
+This matrix maps every official BCSE497J Review 2 requirement directly to empirical repository evidence: implementation source files, automated test suites, research notebooks, and live user interface routes.
+
+**Status Legend:**
+- `PASS`: Full verifiable empirical evidence exists in the repository.
+- `PARTIAL`: In progress or incomplete evidence.
+- `MISSING`: No implementation or test coverage found.
+
+---
+
+## Complete Requirement-to-Evidence Traceability Matrix
+
+| Requirement | Implementation Component | Source File(s) | Automated Test(s) | Notebook Evidence | UI / Screen Evidence | Status |
+|---|---|---|---|---|---|:---:|
+| **R-01: Multi-Source Data Ingestion & Schema Auditing** | Robust data ingestion, missing value imputation, type normalization across Retail Demand, DataCo Supply Chain, and IBM HR. | `src/data/rossmann_features.py`<br>`src/data/dataco_features.py`<br>`src/data/ibm_hr_features.py` | `tests/test_demand_pipeline.py`<br>`tests/test_supply_chain_pipeline.py`<br>`tests/test_workforce_pipeline.py` | `notebooks/01_data_inventory_and_provenance.ipynb`<br>`notebooks/02_demand_eda.ipynb`<br>`notebooks/03_supply_chain_eda.ipynb`<br>`notebooks/04_workforce_eda.ipynb` | `frontend/src/app/system/health/page.tsx` (Dataset metadata & integrity indicators) | **PASS** |
+| **R-02: Retail Demand Forecasting Model** | Time-series retail demand forecasting model with strict chronological train-test split (Jan 2013–Dec 2014 train, Jan–Jul 2015 test). | `src/models/demand/inference.py`<br>`models/demand/demand_model.joblib` | `tests/test_demand_inference.py`<br>`tests/test_demand_pipeline.py` (8 tests) | `notebooks/05_demand_model.ipynb`<br>`notebooks/08_model_evaluation_and_comparison.ipynb` | `frontend/src/app/simulate/page.tsx`<br>`frontend/src/components/dashboard/DomainCards.tsx` (Demand card) | **PASS** |
+| **R-03: Supply Chain Delivery Risk Classification** | XGBoost classification predicting late delivery risk with order-time anti-leakage exclusion and Sigmoid (Platt) calibration. | `src/models/supply_chain/inference.py`<br>`models/supply_chain/supply_chain_model.joblib` | `tests/test_supply_chain_inference.py`<br>`tests/test_supply_chain_pipeline.py` (11 tests) | `notebooks/06_supply_chain_model.ipynb`<br>`notebooks/08_model_evaluation_and_comparison.ipynb` | `frontend/src/app/simulate/page.tsx`<br>`frontend/src/components/dashboard/DomainCards.tsx` (Logistics card) | **PASS** |
+| **R-04: Workforce Attrition Risk Classification** | XGBoost classifier predicting employee turnover risk with stratified evaluation, class weighting, and Sigmoid calibration. | `src/models/workforce/inference.py`<br>`models/workforce/workforce_model.joblib` | `tests/test_workforce_inference.py`<br>`tests/test_workforce_pipeline.py` (14 tests) | `notebooks/07_workforce_model.ipynb`<br>`notebooks/08_model_evaluation_and_comparison.ipynb` | `frontend/src/app/simulate/page.tsx`<br>`frontend/src/components/dashboard/DomainCards.tsx` (Workforce card) | **PASS** |
+| **R-05: Explainable AI (XAI) Feature Attribution** | Pre-computed TreeSHAP attribution matrices across all three domains explaining predictive feature contributions. | `models/demand/feature_importance.json`<br>`models/supply_chain/feature_importance.json`<br>`models/workforce/feature_importance.json` | `tests/test_research_suite.py` (Tests 1–3) | `notebooks/05_demand_model.ipynb`<br>`notebooks/06_supply_chain_model.ipynb`<br>`notebooks/07_workforce_model.ipynb` | `frontend/src/components/dashboard/ShapWaterfallModal.tsx`<br>`frontend/src/app/system/models/page.tsx` | **PASS** |
+| **R-06: Cross-Domain Scenario Engine** | Strongly typed translation of user scenario shocks ($\Delta D, \Delta L, \Delta O$) into coupled downstream operational feature vectors. | `src/scenario/engine.py`<br>`src/scenario/contracts.py`<br>`src/scenario/sweep.py` | `tests/test_scenario_engine.py` (20 tests) | `notebooks/09_cross_domain_decision_pipeline.ipynb`<br>`notebooks/12_sensitivity_analysis.ipynb` | `frontend/src/app/simulate/page.tsx`<br>`frontend/src/components/scenario/ScenarioBuilder.tsx` | **PASS** |
+| **R-07: Deterministic Business Impact Analysis** | Traceable mathematical accounting formulas linking model operational risks to financial metrics ($\Delta \text{Revenue}, \Delta \text{COGS}, \Delta \text{Logistics}, \Delta \text{Labor}, \Delta \Pi$). | `src/business/impact.py`<br>`src/business/contracts.py`<br>`src/business/sensitivity.py` | `tests/test_business_impact.py` (20 tests) | `notebooks/10_financial_accounting.ipynb`<br>`notebooks/15_number_lineage_worked_example.ipynb` | `frontend/src/components/dashboard/FinancialWaterfall.tsx`<br>`frontend/src/app/simulations/[id]/page.tsx` | **PASS** |
+| **R-08: Risk Scoring & Rule-Grounded Recommendation Engine** | Normalized Composite Risk Score (CRS) and rule-grounded synthesis (RULE-01 through RULE-07) yielding strategic decision categories. | `src/recommendation/engine.py`<br>`src/recommendation/rules.py`<br>`src/recommendation/risk_matrix.py` | `tests/test_recommendation_engine.py` (20 tests) | `notebooks/11_risk_and_recommendation_engine.ipynb` | `frontend/src/components/dashboard/DecisionHero.tsx`<br>`frontend/src/components/dashboard/RiskGauge.tsx`<br>`frontend/src/components/dashboard/RecommendationList.tsx` | **PASS** |
+| **R-09: Production FastAPI REST Backend** | High-performance asynchronous FastAPI server serving validated simulation, scenario management, sensitivity sweeps, and health checks. | `backend/app/main.py`<br>`backend/app/api/v1/endpoints/simulations.py`<br>`backend/app/services/simulation_service.py` | `backend/tests/test_routes_simulations.py`<br>`backend/tests/test_simulation_e2e.py` (101 tests) | `notebooks/13_end_to_end_decision_walkthrough.ipynb` | Live backend listening on `http://127.0.0.1:8000/api/v1/` (`GET /system/health`, `POST /simulations`) | **PASS** |
+| **R-10: Interactive React + TypeScript Frontend** | Modern decision intelligence single-page application with progressive disclosure, interactive sliders, waterfall charts, and risk matrices. | `frontend/src/app/`<br>`frontend/src/components/dashboard/`<br>`frontend/src/components/scenario/` | `frontend/tests/unit/`<br>`frontend/tests/components/` (35 tests) | Screenshots in `docs/frontend-manual-verification.md` | 11 functional routes (12 compiled build targets with `/_not-found`) in Next.js production build (`/`, `/simulate`, `/simulations`, `/sensitivity`, `/policies`, `/audit`, etc.) | **PASS** |
+| **R-11: Cryptographic Artifact Integrity & Anti-Tampering (Gate H)** | SHA-256 digest validation of serialized models and configurations before execution to prevent model drift or weight tampering. | `src/scenario/engine.py` (`verify_model_hashes`)<br>`backend/app/services/simulation_service.py` | `backend/tests/test_model_integrity_failure.py` (3 tests) | `notebooks/01_data_inventory_and_provenance.ipynb` | `frontend/src/app/system/models/page.tsx` (Cryptographic verification cards) | **PASS** |
+| **R-12: End-to-End Auditable Number Lineage** | Complete mathematical traceability of every displayed metric from user input lever to final bottom-line profit delta and strategic recommendation. | `docs/number-lineage.md`<br>`src/business/impact.py` | `tests/test_research_suite.py` (Test 6) | `notebooks/15_number_lineage_worked_example.ipynb` | `frontend/src/app/simulations/[id]/page.tsx` (Formula Breakdown drawer) | **PASS** |
+
+---
+
+## Quantitative Evidence Summary
+
+- **Total Automated Unit & Integration Tests:** **236 / 236 PASSING**
+  - Analytical Core & Research Suite (`tests/`): **100 tests** (0 failures)
+  - FastAPI Backend & API Contracts (`backend/tests/`): **101 tests** (0 failures)
+  - Frontend Client & UI Components (`frontend/tests/`): **35 tests** (0 failures)
+- **Frontend Routes Compiled:** **11 functional application routes** (12 compiled build targets including `/_not-found`).
+- **Model Hashes Verified:**
+  - `models/demand/demand_model.joblib`: `fb438c03a742202657bb4ef9196ff17e004bc090e99218f02985dc7720f41941`
+  - `models/supply_chain/supply_chain_model.joblib`: `0052e641cf355257abb332703c3e6a46c65e9ab10a975227d83cf77d7e689b59`
+  - `models/workforce/workforce_model.joblib`: `4b195c7bee3ab8f4afe75ccd0c75fff0c8e18b9fca88a00305e165a010109918`
+- **Analytical Core Invariance:** `git diff --stat src models` returns **0 files modified**.
