@@ -207,3 +207,45 @@ A task or feature is considered **Done** if and only if:
 5. No credentials, secrets, or massive raw datasets are tracked in Git.
 6. The state changes are reflected in `docs/current-state.md`.
 7. An atomic Git commit has been executed.
+
+---
+
+## 13. Academic Research & Publication Protocol
+
+From Phase 1 onward, DecisionSphere is governed by dual requirements: satisfying university deliverables (BCSE497J Review 2, TRL 4) and establishing a Scopus/IEEE-calibre publishable research contribution.
+
+### 13.1 Publication Mindset
+Every major engineering decision must be evaluated against three criteria:
+1. **System Value:** Does this improve the actual working decision-support capability?
+2. **Empirical Defensibility:** Can this capability be measured and evaluated against an explicit hypothesis ($H_1$ to $H_4$)?
+3. **Publication Value:** Does the resulting evidence contribute to answering one of our research questions (RQ1 to RQ4)?
+
+### 13.2 Strict Epistemic Terminology & Anti-Causality Rule
+In accordance with foundational scientific epistemology (Shmueli 2010):
+- **Mandatory Terminology:**
+  - `conditional prediction` (ML models estimating $P(Y \mid X)$ or $\mathbb{E}[Y \mid X]$).
+  - `observed historical association` (statistical correlation in benchmark data).
+  - `parameterized scenario simulation` (evaluating hypothetical feature vectors).
+  - `deterministic business-impact modeling` (transparent financial accounting formulas).
+  - `sensitivity analysis` (stress-testing coupling constants `ASM-001` to `ASM-008`).
+  - `normalized enterprise scenario environment` (the synthetic coupling testbed).
+- **Strictly Prohibited Claims:**
+  - NEVER claim that promotions *cause* a specific percentage sales lift unless a formal causal identification design is verified.
+  - NEVER claim that SHAP values prove physical or economic causality.
+  - NEVER claim that Rossmann, DataCo, and IBM HR represent observations from a single real-world company.
+  - NEVER claim that a recommendation is mathematically optimal without an explicit, solved objective function.
+
+### 13.3 The 6-Tier Epistemic Hierarchy
+Every data point, variable, and metric in code, API responses, and UI elements must map to one of six explicit tiers:
+1. `OBSERVED`: Measured historical ground truth from benchmark datasets.
+2. `PREDICTED`: Statistical machine learning inferences conditioned on input feature vectors.
+3. `ASSUMED`: User-specified scenario shock parameters and baseline operational constants.
+4. `PROPAGATED`: Algorithmic downstream translations across operational domains.
+5. `CALCULATED`: Deterministic mathematical accounting equations for financial and risk metrics.
+6. `RECOMMENDED`: Explicit rule-grounded strategic actions synthesized from risk triggers.
+
+### 13.4 Reference Projects Governance
+- Code in `reference/` represents exploratory legacy student projects.
+- Reference implementations must be critically audited for flaws (e.g., lookahead leakage, contemporaneous target leakage, improper time splits, and discrete binary ROC-AUC errors documented in `docs/reference-project-audit.md`).
+- Reference code must **never** be blindly copied or treated as authoritative architecture.
+
