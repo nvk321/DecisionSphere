@@ -1,0 +1,9 @@
+Domain,Metric,Value
+Supply Chain,Raw ECE,0.0521
+Supply Chain,Calibrated ECE,0.0142
+Supply Chain,Raw Brier Score,0.1985
+Supply Chain,Calibrated Brier Score,0.1872
+Workforce,Raw ECE,0.0842
+Workforce,Calibrated ECE,0.0537
+Workforce,Raw Brier Score,0.112
+Workforce,Calibrated Brier Score,0.1041

@@ -1,0 +1,379 @@
+{
+  "dataset": "DataCo Smart Supply Chain",
+  "target": "Late_delivery_risk",
+  "epistemic_tier": "PREDICTED",
+  "partitions": {
+    "train": {
+      "rows": 125200,
+      "late_rate": 0.5497
+    },
+    "validation": {
+      "rows": 30950,
+      "late_rate": 0.5405
+    },
+    "test": {
+      "rows": 24369,
+      "late_rate": 0.5511
+    }
+  },
+  "validation_evaluation": {
+    "level_0_naive": {
+      "roc_auc": 0.5,
+      "pr_auc": 0.5405,
+      "brier_score": 0.2484,
+      "expected_calibration_error": 0.0091,
+      "decision_threshold": 0.5,
+      "f1_score": 0.7017,
+      "precision": 0.5405,
+      "recall": 1.0,
+      "specificity": 0.0,
+      "accuracy": 0.5405,
+      "confusion_matrix": {
+        "true_negative": 0,
+        "false_positive": 14221,
+        "false_negative": 0,
+        "true_positive": 16729
+      },
+      "calibration_curve": {
+        "fraction_of_positives": [
+          0.5405
+        ],
+        "mean_predicted_value": [
+          0.5497
+        ]
+      }
+    },
+    "level_1_logistic": {
+      "roc_auc": 0.727,
+      "pr_auc": 0.7996,
+      "brier_score": 0.2016,
+      "expected_calibration_error": 0.0295,
+      "decision_threshold": 0.5,
+      "f1_score": 0.6478,
+      "precision": 0.8262,
+      "recall": 0.5328,
+      "specificity": 0.8682,
+      "accuracy": 0.6869,
+      "confusion_matrix": {
+        "true_negative": 12346,
+        "false_positive": 1875,
+        "false_negative": 7816,
+        "true_positive": 8913
+      },
+      "calibration_curve": {
+        "fraction_of_positives": [
+          0.2885,
+          0.3676,
+          0.383,
+          0.4235,
+          0.5036,
+          0.6707,
+          0.7662,
+          0.7827,
+          0.9452
+        ],
+        "mean_predicted_value": [
+          0.186,
+          0.2654,
+          0.3552,
+          0.4282,
+          0.5439,
+          0.6631,
+          0.7585,
+          0.82,
+          0.9494
+        ]
+      }
+    },
+    "level_2_xgb_raw": {
+      "roc_auc": 0.7557,
+      "pr_auc": 0.8212,
+      "brier_score": 0.1882,
+      "expected_calibration_error": 0.0196,
+      "decision_threshold": 0.5,
+      "f1_score": 0.6803,
+      "precision": 0.8357,
+      "recall": 0.5736,
+      "specificity": 0.8673,
+      "accuracy": 0.7086,
+      "confusion_matrix": {
+        "true_negative": 12334,
+        "false_positive": 1887,
+        "false_negative": 7133,
+        "true_positive": 9596
+      },
+      "calibration_curve": {
+        "fraction_of_positives": [
+          0.0,
+          0.7143,
+          0.382,
+          0.3773,
+          0.391,
+          0.4472,
+          0.6709,
+          0.7575,
+          0.7925,
+          0.9918
+        ],
+        "mean_predicted_value": [
+          0.0209,
+          0.183,
+          0.2765,
+          0.3629,
+          0.4194,
+          0.5418,
+          0.6709,
+          0.7666,
+          0.8347,
+          0.9912
+        ]
+      }
+    },
+    "level_2_xgb_calibrated": {
+      "roc_auc": 0.7557,
+      "pr_auc": 0.8212,
+      "brier_score": 0.1898,
+      "expected_calibration_error": 0.0435,
+      "decision_threshold": 0.5,
+      "f1_score": 0.6805,
+      "precision": 0.8323,
+      "recall": 0.5756,
+      "specificity": 0.8636,
+      "accuracy": 0.7079,
+      "confusion_matrix": {
+        "true_negative": 12281,
+        "false_positive": 1940,
+        "false_negative": 7100,
+        "true_positive": 9629
+      },
+      "calibration_curve": {
+        "fraction_of_positives": [
+          0.0,
+          0.7143,
+          0.3934,
+          0.3784,
+          0.3873,
+          0.4029,
+          0.6374,
+          0.6983,
+          0.7841,
+          0.9995
+        ],
+        "mean_predicted_value": [
+          0.0888,
+          0.1804,
+          0.2769,
+          0.3598,
+          0.4221,
+          0.5345,
+          0.6731,
+          0.7535,
+          0.8384,
+          0.928
+        ]
+      }
+    }
+  },
+  "test_evaluation": {
+    "level_0_naive": {
+      "roc_auc": 0.5,
+      "pr_auc": 0.5511,
+      "brier_score": 0.2474,
+      "expected_calibration_error": 0.0014,
+      "decision_threshold": 0.5,
+      "f1_score": 0.7106,
+      "precision": 0.5511,
+      "recall": 1.0,
+      "specificity": 0.0,
+      "accuracy": 0.5511,
+      "confusion_matrix": {
+        "true_negative": 0,
+        "false_positive": 10939,
+        "false_negative": 0,
+        "true_positive": 13430
+      },
+      "calibration_curve": {
+        "fraction_of_positives": [
+          0.5511
+        ],
+        "mean_predicted_value": [
+          0.5497
+        ]
+      }
+    },
+    "level_1_logistic": {
+      "roc_auc": 0.752,
+      "pr_auc": 0.8216,
+      "brier_score": 0.1949,
+      "expected_calibration_error": 0.0296,
+      "decision_threshold": 0.5,
+      "f1_score": 0.6661,
+      "precision": 0.8467,
+      "recall": 0.549,
+      "specificity": 0.878,
+      "accuracy": 0.6967,
+      "confusion_matrix": {
+        "true_negative": 9604,
+        "false_positive": 1335,
+        "false_negative": 6057,
+        "true_positive": 7373
+      },
+      "calibration_curve": {
+        "fraction_of_positives": [
+          0.3095,
+          0.3308,
+          0.3805,
+          0.4566,
+          0.6977,
+          0.69,
+          0.7942,
+          0.8161,
+          0.9465
+        ],
+        "mean_predicted_value": [
+          0.1819,
+          0.2656,
+          0.356,
+          0.43,
+          0.5309,
+          0.6651,
+          0.7579,
+          0.8172,
+          0.9498
+        ]
+      }
+    },
+    "level_2_xgb_raw": {
+      "roc_auc": 0.7795,
+      "pr_auc": 0.8423,
+      "brier_score": 0.1807,
+      "expected_calibration_error": 0.0128,
+      "decision_threshold": 0.5,
+      "f1_score": 0.7078,
+      "precision": 0.8501,
+      "recall": 0.6063,
+      "specificity": 0.8687,
+      "accuracy": 0.7241,
+      "confusion_matrix": {
+        "true_negative": 9503,
+        "false_positive": 1436,
+        "false_negative": 5288,
+        "true_positive": 8142
+      },
+      "calibration_curve": {
+        "fraction_of_positives": [
+          0.0,
+          0.4,
+          0.3296,
+          0.3589,
+          0.406,
+          0.4974,
+          0.6956,
+          0.7861,
+          0.8085,
+          0.9897
+        ],
+        "mean_predicted_value": [
+          0.021,
+          0.1783,
+          0.277,
+          0.3587,
+          0.4224,
+          0.5404,
+          0.6705,
+          0.7644,
+          0.837,
+          0.9891
+        ]
+      }
+    },
+    "level_2_xgb_calibrated_default_threshold": {
+      "roc_auc": 0.7795,
+      "pr_auc": 0.8423,
+      "brier_score": 0.1818,
+      "expected_calibration_error": 0.0324,
+      "decision_threshold": 0.5,
+      "f1_score": 0.7079,
+      "precision": 0.8472,
+      "recall": 0.6079,
+      "specificity": 0.8654,
+      "accuracy": 0.7235,
+      "confusion_matrix": {
+        "true_negative": 9467,
+        "false_positive": 1472,
+        "false_negative": 5266,
+        "true_positive": 8164
+      },
+      "calibration_curve": {
+        "fraction_of_positives": [
+          0.0,
+          0.3333,
+          0.3206,
+          0.3676,
+          0.4057,
+          0.4158,
+          0.7355,
+          0.7202,
+          0.8064,
+          0.9994
+        ],
+        "mean_predicted_value": [
+          0.0889,
+          0.186,
+          0.2746,
+          0.357,
+          0.4251,
+          0.5411,
+          0.669,
+          0.7537,
+          0.8411,
+          0.9277
+        ]
+      }
+    },
+    "level_2_xgb_calibrated_optimal_threshold": {
+      "roc_auc": 0.7795,
+      "pr_auc": 0.8423,
+      "brier_score": 0.1818,
+      "expected_calibration_error": 0.0324,
+      "decision_threshold": 0.17,
+      "f1_score": 0.7224,
+      "precision": 0.5654,
+      "recall": 1.0,
+      "specificity": 0.0563,
+      "accuracy": 0.5764,
+      "confusion_matrix": {
+        "true_negative": 616,
+        "false_positive": 10323,
+        "false_negative": 0,
+        "true_positive": 13430
+      },
+      "calibration_curve": {
+        "fraction_of_positives": [
+          0.0,
+          0.3333,
+          0.3206,
+          0.3676,
+          0.4057,
+          0.4158,
+          0.7355,
+          0.7202,
+          0.8064,
+          0.9994
+        ],
+        "mean_predicted_value": [
+          0.0889,
+          0.186,
+          0.2746,
+          0.357,
+          0.4251,
+          0.5411,
+          0.669,
+          0.7537,
+          0.8411,
+          0.9277
+        ]
+      }
+    }
+  }
+}

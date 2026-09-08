@@ -1,0 +1,10 @@
+Domain,Model,Primary_Metric,Score,Secondary_Metric,Secondary_Score
+Retail Demand,Level 0 Naive Seasonal,WAPE (%),33.32,RMSE,3275.6
+Retail Demand,Level 1 Ridge Regression,WAPE (%),11.98,RMSE,1205.38
+Retail Demand,Level 2 XGBoost Regressor,WAPE (%),8.12,RMSE,838.83
+Supply Chain,Majority Class Baseline,ROC-AUC,0.5,Accuracy,0.548
+Supply Chain,Logistic Regression Baseline,ROC-AUC,0.752,Accuracy,0.694
+Supply Chain,XGBoost Classifier,ROC-AUC,0.7795,Accuracy,0.712
+Workforce,Majority Class Baseline,ROC-AUC,0.5,Accuracy,0.839
+Workforce,Logistic Regression Baseline,ROC-AUC,0.833,Accuracy,0.842
+Workforce,XGBoost Classifier,ROC-AUC,0.8045,Accuracy,0.864

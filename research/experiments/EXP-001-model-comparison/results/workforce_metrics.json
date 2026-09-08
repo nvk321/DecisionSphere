@@ -1,0 +1,378 @@
+{
+  "dataset": "IBM HR Analytics Employee Attrition",
+  "target": "Attrition (1=Yes, 0=No)",
+  "epistemic_tier": "PREDICTED",
+  "partitions": {
+    "train": {
+      "rows": 1029,
+      "positive_attrition": 166,
+      "negative_attrition": 863,
+      "prevalence": 0.1613
+    },
+    "validation": {
+      "rows": 220,
+      "positive_attrition": 35,
+      "negative_attrition": 185,
+      "prevalence": 0.1591
+    },
+    "test": {
+      "rows": 221,
+      "positive_attrition": 36,
+      "negative_attrition": 185,
+      "prevalence": 0.1629
+    },
+    "scale_pos_weight": 5.1988
+  },
+  "validation_evaluation": {
+    "level_0_naive_prevalence": {
+      "roc_auc": 0.5,
+      "pr_auc": 0.1591,
+      "brier_score": 0.1338,
+      "expected_calibration_error": 0.0022,
+      "decision_threshold": 0.5,
+      "f1_score": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "specificity": 1.0,
+      "accuracy": 0.8409,
+      "confusion_matrix": {
+        "true_negative": 185,
+        "false_positive": 0,
+        "false_negative": 35,
+        "true_positive": 0
+      },
+      "calibration_curve": {
+        "fraction_of_positives": [
+          0.1591
+        ],
+        "mean_predicted_value": [
+          0.1613
+        ]
+      }
+    },
+    "level_1_logistic": {
+      "roc_auc": 0.8036,
+      "pr_auc": 0.5768,
+      "brier_score": 0.1417,
+      "expected_calibration_error": 0.1594,
+      "decision_threshold": 0.5,
+      "f1_score": 0.5055,
+      "precision": 0.4107,
+      "recall": 0.6571,
+      "specificity": 0.8216,
+      "accuracy": 0.7955,
+      "confusion_matrix": {
+        "true_negative": 152,
+        "false_positive": 33,
+        "false_negative": 12,
+        "true_positive": 23
+      },
+      "calibration_curve": {
+        "fraction_of_positives": [
+          0.0462,
+          0.037,
+          0.0909,
+          0.1,
+          0.1579,
+          0.2105,
+          0.3636,
+          0.2857,
+          0.5833,
+          0.8571
+        ],
+        "mean_predicted_value": [
+          0.0451,
+          0.1494,
+          0.2428,
+          0.3402,
+          0.4609,
+          0.5416,
+          0.6505,
+          0.7359,
+          0.8508,
+          0.9407
+        ]
+      }
+    },
+    "level_2_xgb_raw": {
+      "roc_auc": 0.7392,
+      "pr_auc": 0.3767,
+      "brier_score": 0.1533,
+      "expected_calibration_error": 0.1699,
+      "decision_threshold": 0.5,
+      "f1_score": 0.4524,
+      "precision": 0.3878,
+      "recall": 0.5429,
+      "specificity": 0.8378,
+      "accuracy": 0.7909,
+      "confusion_matrix": {
+        "true_negative": 155,
+        "false_positive": 30,
+        "false_negative": 16,
+        "true_positive": 19
+      },
+      "calibration_curve": {
+        "fraction_of_positives": [
+          0.0417,
+          0.1042,
+          0.0444,
+          0.0938,
+          0.2273,
+          0.2778,
+          0.4444,
+          0.2857,
+          0.8,
+          0.0
+        ],
+        "mean_predicted_value": [
+          0.0788,
+          0.1498,
+          0.2472,
+          0.3398,
+          0.4329,
+          0.5472,
+          0.6368,
+          0.7582,
+          0.8463,
+          0.9165
+        ]
+      }
+    },
+    "level_2_xgb_calibrated": {
+      "roc_auc": 0.7392,
+      "pr_auc": 0.3767,
+      "brier_score": 0.1172,
+      "expected_calibration_error": 0.0396,
+      "decision_threshold": 0.5,
+      "f1_score": 0.1951,
+      "precision": 0.6667,
+      "recall": 0.1143,
+      "specificity": 0.9892,
+      "accuracy": 0.85,
+      "confusion_matrix": {
+        "true_negative": 183,
+        "false_positive": 2,
+        "false_negative": 31,
+        "true_positive": 4
+      },
+      "calibration_curve": {
+        "fraction_of_positives": [
+          0.08,
+          0.1045,
+          0.2857,
+          0.4211,
+          0.2857,
+          0.8,
+          0.0
+        ],
+        "mean_predicted_value": [
+          0.0698,
+          0.1417,
+          0.2553,
+          0.3444,
+          0.4656,
+          0.5553,
+          0.6249
+        ]
+      }
+    },
+    "threshold_selection": {
+      "criterion": "max_f1",
+      "optimal_f1_threshold": 0.21,
+      "validation_f1_at_optimal_threshold": 0.4706,
+      "recall_oriented_diagnostic_threshold_80pct": 0.05
+    }
+  },
+  "test_evaluation": {
+    "level_0_naive_prevalence": {
+      "roc_auc": 0.5,
+      "pr_auc": 0.1629,
+      "brier_score": 0.1364,
+      "expected_calibration_error": 0.0016,
+      "decision_threshold": 0.5,
+      "f1_score": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "specificity": 1.0,
+      "accuracy": 0.8371,
+      "confusion_matrix": {
+        "true_negative": 185,
+        "false_positive": 0,
+        "false_negative": 36,
+        "true_positive": 0
+      },
+      "calibration_curve": {
+        "fraction_of_positives": [
+          0.1629
+        ],
+        "mean_predicted_value": [
+          0.1613
+        ]
+      }
+    },
+    "level_1_logistic": {
+      "roc_auc": 0.833,
+      "pr_auc": 0.619,
+      "brier_score": 0.1578,
+      "expected_calibration_error": 0.1929,
+      "decision_threshold": 0.5,
+      "f1_score": 0.4587,
+      "precision": 0.3425,
+      "recall": 0.6944,
+      "specificity": 0.7405,
+      "accuracy": 0.733,
+      "confusion_matrix": {
+        "true_negative": 137,
+        "false_positive": 48,
+        "false_negative": 11,
+        "true_positive": 25
+      },
+      "calibration_curve": {
+        "fraction_of_positives": [
+          0.0357,
+          0.0256,
+          0.0769,
+          0.1333,
+          0.3333,
+          0.0,
+          0.2667,
+          0.2941,
+          0.5385,
+          0.8182
+        ],
+        "mean_predicted_value": [
+          0.0415,
+          0.1481,
+          0.2471,
+          0.3491,
+          0.4472,
+          0.5561,
+          0.6527,
+          0.7474,
+          0.8529,
+          0.9517
+        ]
+      }
+    },
+    "level_2_xgb_raw_default_threshold": {
+      "roc_auc": 0.8045,
+      "pr_auc": 0.503,
+      "brier_score": 0.1415,
+      "expected_calibration_error": 0.1723,
+      "decision_threshold": 0.5,
+      "f1_score": 0.4878,
+      "precision": 0.4348,
+      "recall": 0.5556,
+      "specificity": 0.8595,
+      "accuracy": 0.81,
+      "confusion_matrix": {
+        "true_negative": 159,
+        "false_positive": 26,
+        "false_negative": 16,
+        "true_positive": 20
+      },
+      "calibration_curve": {
+        "fraction_of_positives": [
+          0.0588,
+          0.0351,
+          0.0465,
+          0.1892,
+          0.1905,
+          0.3333,
+          0.25,
+          0.5,
+          0.75,
+          0.6667
+        ],
+        "mean_predicted_value": [
+          0.0786,
+          0.148,
+          0.2473,
+          0.3433,
+          0.4429,
+          0.5449,
+          0.6475,
+          0.7466,
+          0.8649,
+          0.943
+        ]
+      }
+    },
+    "level_2_xgb_calibrated_default_threshold": {
+      "roc_auc": 0.8045,
+      "pr_auc": 0.503,
+      "brier_score": 0.1086,
+      "expected_calibration_error": 0.0537,
+      "decision_threshold": 0.5,
+      "f1_score": 0.3404,
+      "precision": 0.7273,
+      "recall": 0.2222,
+      "specificity": 0.9838,
+      "accuracy": 0.8597,
+      "confusion_matrix": {
+        "true_negative": 182,
+        "false_positive": 3,
+        "false_negative": 28,
+        "true_positive": 8
+      },
+      "calibration_curve": {
+        "fraction_of_positives": [
+          0.0505,
+          0.1159,
+          0.4,
+          0.1667,
+          0.5,
+          0.8571,
+          0.5
+        ],
+        "mean_predicted_value": [
+          0.0699,
+          0.1394,
+          0.2446,
+          0.3398,
+          0.4438,
+          0.569,
+          0.6394
+        ]
+      }
+    },
+    "level_2_xgb_calibrated_optimal_threshold": {
+      "roc_auc": 0.8045,
+      "pr_auc": 0.503,
+      "brier_score": 0.1086,
+      "expected_calibration_error": 0.0537,
+      "decision_threshold": 0.21,
+      "f1_score": 0.4706,
+      "precision": 0.4082,
+      "recall": 0.5556,
+      "specificity": 0.8432,
+      "accuracy": 0.7964,
+      "confusion_matrix": {
+        "true_negative": 156,
+        "false_positive": 29,
+        "false_negative": 16,
+        "true_positive": 20
+      },
+      "calibration_curve": {
+        "fraction_of_positives": [
+          0.0505,
+          0.1159,
+          0.4,
+          0.1667,
+          0.5,
+          0.8571,
+          0.5
+        ],
+        "mean_predicted_value": [
+          0.0699,
+          0.1394,
+          0.2446,
+          0.3398,
+          0.4438,
+          0.569,
+          0.6394
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,4 @@
+Paradigm,Assumed_Profit,True_Realized_Profit,Decision,Strategic_Outcome
+1. Naive Commercial Rule,12524.576442235011,-642716.1770684934,APPROVE_PROMOTION,Severe Financial Loss (-$642k)
+2. Siloed ML (Demand-Only),10684.310371843312,-642716.1770684934,APPROVE_PROMOTION,Severe Financial Loss (-$642k)
+3. DecisionSphere (Integrated DI),-642716.1770684934,-642716.1770684934,REJECT_RESTRUCTURE,Loss Avoided via Restructuring

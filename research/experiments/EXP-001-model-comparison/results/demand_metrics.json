@@ -1,0 +1,67 @@
+{
+  "dataset": "Rossmann Store Sales",
+  "evaluation_units": "Sales units",
+  "split_boundaries": {
+    "train": "2013-01-01 to 2014-10-19",
+    "val": "2014-10-20 to 2015-03-10",
+    "test": "2015-03-11 to 2015-07-31"
+  },
+  "sample_counts": {
+    "train_open": 591677,
+    "val_open": 121104,
+    "test_open": 131557,
+    "test_total": 159445
+  },
+  "models": {
+    "Level_0_Naive_Seasonal": {
+      "description": "7-day seasonal persistence (y_{t-7}) with store-mean fallback",
+      "test_metrics": {
+        "sample_count": 131557,
+        "mean_actual_sales": 7198.79,
+        "mae_sales_units": 2398.31,
+        "rmse_sales_units": 3275.6,
+        "wape_ratio": 0.3332,
+        "wape_pct": 33.32
+      }
+    },
+    "Level_1_Ridge_Regression": {
+      "description": "Ridge regression (L2 regularized) on scaled features",
+      "test_metrics": {
+        "sample_count": 131557,
+        "mean_actual_sales": 7198.79,
+        "mae_sales_units": 862.57,
+        "rmse_sales_units": 1205.38,
+        "wape_ratio": 0.1198,
+        "wape_pct": 11.98
+      }
+    },
+    "Level_2_XGBoost": {
+      "description": "XGBoost Regressor with early stopping",
+      "best_iteration": 107,
+      "val_metrics": {
+        "sample_count": 121104,
+        "mean_actual_sales": 7309.58,
+        "mae_sales_units": 715.14,
+        "rmse_sales_units": 1041.51,
+        "wape_ratio": 0.0978,
+        "wape_pct": 9.78
+      },
+      "test_metrics_open_stores": {
+        "sample_count": 131557,
+        "mean_actual_sales": 7198.79,
+        "mae_sales_units": 584.49,
+        "rmse_sales_units": 838.83,
+        "wape_ratio": 0.0812,
+        "wape_pct": 8.12
+      },
+      "test_metrics_all_stores": {
+        "sample_count": 159445,
+        "mean_actual_sales": 5939.68,
+        "mae_sales_units": 482.44,
+        "rmse_sales_units": 763.75,
+        "wape_ratio": 0.0812,
+        "wape_pct": 8.12
+      }
+    }
+  }
+}

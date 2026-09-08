@@ -1,0 +1,220 @@
+{
+  "dataset": "DataCo Smart Supply Chain",
+  "method": "TreeSHAP",
+  "evaluation_partition": "Test (strict chronological holdout 2017-07 to 2018-01)",
+  "sample_size": 2000,
+  "epistemic_tier": "PREDICTED",
+  "high_level_feature_importance": [
+    {
+      "feature": "days_for_shipment_scheduled",
+      "mean_abs_shap": 0.747551
+    },
+    {
+      "feature": "shipping_mode",
+      "mean_abs_shap": 0.677952
+    },
+    {
+      "feature": "type",
+      "mean_abs_shap": 0.384161
+    },
+    {
+      "feature": "order_hour",
+      "mean_abs_shap": 0.164065
+    },
+    {
+      "feature": "order_country",
+      "mean_abs_shap": 0.077796
+    },
+    {
+      "feature": "longitude",
+      "mean_abs_shap": 0.056499
+    },
+    {
+      "feature": "latitude",
+      "mean_abs_shap": 0.035229
+    },
+    {
+      "feature": "customer_state",
+      "mean_abs_shap": 0.031687
+    },
+    {
+      "feature": "order_region",
+      "mean_abs_shap": 0.029061
+    },
+    {
+      "feature": "order_month",
+      "mean_abs_shap": 0.013761
+    },
+    {
+      "feature": "order_day_of_week",
+      "mean_abs_shap": 0.011525
+    },
+    {
+      "feature": "order_item_total",
+      "mean_abs_shap": 0.010224
+    },
+    {
+      "feature": "customer_segment",
+      "mean_abs_shap": 0.007536
+    },
+    {
+      "feature": "category_id",
+      "mean_abs_shap": 0.006896
+    },
+    {
+      "feature": "order_item_discount_rate",
+      "mean_abs_shap": 0.006276
+    },
+    {
+      "feature": "market",
+      "mean_abs_shap": 0.005656
+    },
+    {
+      "feature": "department_id",
+      "mean_abs_shap": 0.002706
+    },
+    {
+      "feature": "order_item_product_price",
+      "mean_abs_shap": 0.002383
+    },
+    {
+      "feature": "customer_country",
+      "mean_abs_shap": 0.001707
+    },
+    {
+      "feature": "order_item_quantity",
+      "mean_abs_shap": 0.001564
+    },
+    {
+      "feature": "product_price",
+      "mean_abs_shap": 0.001182
+    },
+    {
+      "feature": "order_year",
+      "mean_abs_shap": 0.001128
+    }
+  ],
+  "top_encoded_features": [
+    {
+      "feature": "num__days_for_shipment_scheduled",
+      "mean_abs_shap": 0.747551
+    },
+    {
+      "feature": "cat__shipping_mode_First Class",
+      "mean_abs_shap": 0.49243
+    },
+    {
+      "feature": "cat__type_TRANSFER",
+      "mean_abs_shap": 0.316959
+    },
+    {
+      "feature": "num__order_hour",
+      "mean_abs_shap": 0.164065
+    },
+    {
+      "feature": "cat__shipping_mode_Second Class",
+      "mean_abs_shap": 0.098947
+    },
+    {
+      "feature": "cat__shipping_mode_Standard Class",
+      "mean_abs_shap": 0.072581
+    },
+    {
+      "feature": "num__longitude",
+      "mean_abs_shap": 0.056499
+    },
+    {
+      "feature": "cat__type_DEBIT",
+      "mean_abs_shap": 0.046038
+    },
+    {
+      "feature": "num__latitude",
+      "mean_abs_shap": 0.035229
+    },
+    {
+      "feature": "cat__type_PAYMENT",
+      "mean_abs_shap": 0.015996
+    },
+    {
+      "feature": "cat__shipping_mode_Same Day",
+      "mean_abs_shap": 0.013994
+    },
+    {
+      "feature": "num__order_month",
+      "mean_abs_shap": 0.013761
+    },
+    {
+      "feature": "cat__order_country_Alemania",
+      "mean_abs_shap": 0.01317
+    },
+    {
+      "feature": "num__order_day_of_week",
+      "mean_abs_shap": 0.011525
+    },
+    {
+      "feature": "num__order_item_total",
+      "mean_abs_shap": 0.010224
+    },
+    {
+      "feature": "cat__order_country_Italia",
+      "mean_abs_shap": 0.009602
+    },
+    {
+      "feature": "cat__order_country_Reino Unido",
+      "mean_abs_shap": 0.007897
+    },
+    {
+      "feature": "cat__order_region_Western Europe",
+      "mean_abs_shap": 0.007403
+    },
+    {
+      "feature": "num__order_item_discount_rate",
+      "mean_abs_shap": 0.006276
+    },
+    {
+      "feature": "cat__order_country_Suecia",
+      "mean_abs_shap": 0.005359
+    },
+    {
+      "feature": "cat__type_CASH",
+      "mean_abs_shap": 0.005168
+    },
+    {
+      "feature": "cat__customer_segment_Corporate",
+      "mean_abs_shap": 0.003662
+    },
+    {
+      "feature": "cat__customer_segment_Consumer",
+      "mean_abs_shap": 0.002531
+    },
+    {
+      "feature": "cat__customer_state_MI",
+      "mean_abs_shap": 0.002531
+    },
+    {
+      "feature": "num__order_item_product_price",
+      "mean_abs_shap": 0.002383
+    },
+    {
+      "feature": "cat__order_country_Rep\u00fablica Democr\u00e1tica del Congo",
+      "mean_abs_shap": 0.002369
+    },
+    {
+      "feature": "cat__order_region_Northern Europe",
+      "mean_abs_shap": 0.002324
+    },
+    {
+      "feature": "cat__order_country_Espa\u00f1a",
+      "mean_abs_shap": 0.002266
+    },
+    {
+      "feature": "cat__customer_state_OR",
+      "mean_abs_shap": 0.002252
+    },
+    {
+      "feature": "cat__order_region_West of USA",
+      "mean_abs_shap": 0.002204
+    }
+  ],
+  "shap_base_value": 0.20460455119609833
+}
