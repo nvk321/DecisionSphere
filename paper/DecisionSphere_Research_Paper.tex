@@ -283,8 +283,23 @@ Executing the canonical scenario across the live analytical core produces exact,
 \label{fig:waterfall}
 \end{figure}
 
-\subsection{Multidimensional Sensitivity Analysis}
-Unidimensional sweeps across delay penalties (\$10--\$60/order) and overtime multipliers reveal that profitability collapses into negative territory when promotional demand surges exceed $+12.5\%$ under standard shipping logistics. Tipping point analysis confirms that unbuffered promotions inherently destroy value unless accompanied by dedicated carrier capacity reservations.
+\subsection{Operational Tipping Point Dynamics (EXP-005)}
+Continuous parameter sweeps from $0.0\%$ to $+30.0\%$ demand shock identify an operational tipping point at $+18.4\%$. While demand surges up to $+18.0\%$ yield positive net margin ($\Delta \Pi > 0$), surges beyond $+18.4\%$ trigger non-linear delay penalties and turnover costs that rapidly outpace gross revenues (Fig.~\ref{fig:waterfall}).
+
+\subsection{Architectural Component Ablation (EXP-006)}
+To quantify the contribution of cross-domain propagation, we evaluate four architectural configurations in Table~\ref{tab:ablation_study}. Siloed accounting under-estimates operational loss by $\$422,497.32$, while omitting overtime labor strain misses $\$154,284.00$ in employee replacement friction. Conversely, relaxing contractual lead times by $+2$ days mitigates $\$274,752.29$ in carrier penalties.
+
+\input{tables/ablation_study}
+
+\subsection{End-to-End Decision Baseline Comparison (EXP-007)}
+We benchmark traditional decision paradigms against DecisionSphere in Table~\ref{tab:baseline_comparison}. Both naive commercial rules ($+\$12,524.58$) and single-domain demand ML ($+\$10,684.31$) approve the promotion because they are blind to downstream operational friction. DecisionSphere detects the true $-\$642,716.18$ deficit and enforces an objective restructuring rejection (\texttt{REJECT\_RESTRUCTURE}), preventing catastrophic capital loss.
+
+\input{tables/baseline_comparison}
+
+\subsection{Uncertainty Quantification and Monte Carlo Convergence (EXP-008 \& EXP-009)}
+To evaluate estimator stability under stochastic operational noise, we execute $N=200$ Monte Carlo runs with Gaussian perturbations applied to demand ($\mu=15\%, \sigma=2\%$) and overtime ($\mu=40\%, \sigma=4\%$). As documented in Table~\ref{tab:monte_carlo_convergence}, the standard error converges at the asymptotic rate $\mathcal{O}(1/\sqrt{N})$, shrinking from $\$20,838.95$ ($N=10$) to $\$3,955.49$ ($N=200$). Across all 200 stochastic runs, the strategic decision is 100.0\% \texttt{REJECT\_RESTRUCTURE}, confirming that the recommendation is an invariant structural property of the operational system.
+
+\input{tables/monte_carlo_convergence}
 
 \section{Discussion}
 

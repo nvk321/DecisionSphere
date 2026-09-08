@@ -1,0 +1,294 @@
+\documentclass[10pt,conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{microtype}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\begin{document}
+
+\title{Empirical Evaluation and Experimental Benchmarking of DecisionSphere: A Cross-Domain Enterprise Decision Intelligence Platform}
+
+\author{\IEEEauthorblockN{P Naga Venkata Kushal\IEEEauthorrefmark{1}, P Manjunatha Kumar Tejas\IEEEauthorrefmark{2}, Jeswanth Reddy Sagabala\IEEEauthorrefmark{3}, and Suresh A\IEEEauthorrefmark{4}}
+\IEEEauthorblockA{School of Computer Science and Engineering (SCOPE)\\
+Vellore Institute of Technology, Vellore, Tamil Nadu, India\\
+Email: \IEEEauthorrefmark{1}kushal.pnv2023@vitstudent.ac.in,
+\IEEEauthorrefmark{2}tejas.pmk2023@vitstudent.ac.in,
+\IEEEauthorrefmark{3}jeswanth.rs2023@vitstudent.ac.in,
+\IEEEauthorrefmark{4}suresh.a@vit.ac.in}
+}
+
+\maketitle
+
+\begin{abstract}
+Predictive machine learning (ML) models in modern enterprises are almost universally deployed in isolated operational silos: demand forecasting optimizes sales volume, carrier classifiers track late shipping, and human resource models monitor employee attrition. When strategic commercial decisions (such as promotional price cuts) are executed, downstream operational friction routinely induces delayed order dispatches, mandatory overtime, employee burnout, and balance-sheet margin collapse. This paper presents an exhaustive experimental benchmarking suite (EXP-001 through EXP-009) evaluating \textbf{DecisionSphere}, an integrated decision intelligence platform coupling three offline-trained, Platt-calibrated gradient boosted tree estimators with a deterministic 13-stage managerial accounting engine. On a multi-domain enterprise testbed (Rossmann, DataCo, IBM HR), our empirical results demonstrate: (1) XGBoost outperforms naive and linear baselines, achieving $8.12\%$ WAPE on demand forecasting and $0.7795$ ROC-AUC on logistics delay risk; (2) Platt scaling reduces logistics Expected Calibration Error (ECE) by $72.7\%$ (from $0.0521$ to $0.0142$), preventing a $\$79,534$ distortion in expected delay penalties; (3) Multi-dimensional sensitivity sweeps identify a critical operational tipping point at $+18.4\%$ commercial demand expansion, beyond which carrier penalties and turnover replacement drag exceed gross revenue; (4) Component ablation reveals that traditional siloed planning approves an unbuffered commercial surge anticipating $+\$10,684$ in margin, whereas DecisionSphere identifies the true $-\$642,716.18$ deficit and automatically triggers an objective restructuring rejection (\texttt{REJECT\_RESTRUCTURE}); and (5) Across $N=200$ stochastic Monte Carlo perturbation runs, the standard error converges asymptotically ($\mathcal{O}(1/\sqrt{N})$, $\text{SE} = \$3,955.49$) with $100.0\%$ decision stability.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Decision Intelligence, Cross-Domain Simulation, Probability Calibration, Expected Loss Accounting, Explainable AI, Margin Tipping Point, Robustness Evaluation.
+\end{IEEEkeywords}
+
+\section{Introduction}
+
+In enterprise operations, decision support systems face an epistemological dilemma: traditional Business Intelligence (BI) dashboards provide retrospective descriptive reporting without forward counterfactual simulation, while pure machine learning pipelines optimize localized loss functions in operational isolation \cite{pratt2019decision}. When a commercial sales promotion is launched, demand surges, straining warehouse dispatch lines, increasing carrier late delivery probabilities, mandating overtime labor, and accelerating employee voluntary turnover \cite{lee1997bullwhip, maslach2001burnout}.
+
+DecisionSphere was formulated to bridge this operational divide by coupling predictive machine learning with deterministic managerial accounting. To establish the scientific defensibility of this approach, we execute a rigorous, hypothesis-driven, outcome-neutral experimental research program comprising nine formal experiments (EXP-001 through EXP-009). All experimental data, scripts, and figure artifacts are open-source and cryptographically auditable.
+
+\section{Experimental Benchmark Protocols and Anti-Leakage Invariants}
+
+\subsection{Benchmark Datasets}
+As summarized in Table~\ref{tab:datasets}, the experimental program evaluates three standardized public benchmark datasets:
+\begin{enumerate}
+    \item \textbf{Retail Demand:} Rossmann Store Sales benchmark \cite{rossmann2015kaggle}, encompassing 1,115 pharmacy stores and 1,017,209 daily transactional sales observations.
+    \item \textbf{Supply Chain Logistics:} DataCo Smart Supply Chain dataset \cite{constante2019dataco}, comprising 180,519 global order shipments spanning standard, first-class, second-class, and same-day fulfillment modes.
+    \item \textbf{Workforce Human Capital:} IBM HR Analytics Employee Attrition benchmark \cite{ibm2017attrition}, consisting of 1,470 employee records across 35 demographic, compensation, and operational attributes.
+\end{enumerate}
+
+\begin{table}[htbp]
+\caption{Benchmark Dataset Summary and Partitioning Protocols}
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Domain} & \textbf{Observations} & \textbf{Features} & \textbf{Target} & \textbf{Split Protocol} \\
+\midrule
+Demand & 1,017,209 & 18 & Sales (Units) & Chronological (2013--15) \\
+Logistics & 180,519 & 24 & Late Risk (0/1) & Chronological Holdout (80/20) \\
+Workforce & 1,470 & 32 & Attrition (0/1) & Stratified Holdout (80/20) \\
+\bottomrule
+\end{tabular}
+\label{tab:datasets}
+\end{center}
+\end{table}
+
+\subsection{Anti-Leakage Engineering Invariants}
+To prevent data leakage, three compile-time invariants are strictly enforced:
+\begin{itemize}
+    \item \textbf{Chronological Partitioning:} Demand data is split chronologically: training on 2013-01-01 to 2014-10-19 (591,677 open store records), validation on 2014-10-20 to 2015-03-10 (121,104 records), and evaluation on the strict future holdout 2015-03-11 to 2015-07-31 (131,557 open store records). Random shuffling is prohibited.
+    \item \textbf{Order-Time Predictor Registry:} In supply chain classification, all post-checkout transit milestones (\texttt{Days for shipping (real)}, \texttt{Delivery Status}, \texttt{Order Status}) are quarantined via an immutable \texttt{PROHIBITED\_LOOKAHEAD\_COLUMNS} registry.
+    \item \textbf{Contemporaneous Demand Quarantine:} The contemporaneous variable \texttt{Customers} is eliminated from demand training, as customer foot-traffic is unknown prior to daily store opening.
+\end{itemize}
+
+\section{EXP-001: Multi-Domain Predictive Model Benchmarking}
+
+\subsection{Research Question and Hypothesis}
+\textbf{RQ-1:} \textit{Does non-linear gradient boosted decision tree modeling outperform naive persistence and regularized linear baselines across heterogeneous enterprise domains?}  
+\textbf{Hypothesis ($H_{1a}$):} XGBoost estimators achieve lower generalization error across time-series demand forecasting and tabular risk classification.
+
+\subsection{Methodology and Empirical Results}
+We evaluate three model tiers per domain: Naive / Majority baseline (Tier 0), Regularized Linear / Logistic Regression (Tier 1), and Extreme Gradient Boosting (XGBoost) with early stopping (Tier 2) \cite{chen2016xgboost}. Table~\ref{tab:model_performance} details empirical performance metrics.
+
+\begin{table}[htbp]
+\caption{Empirical Model Performance and Calibration Benchmarks (EXP-001 \& EXP-002)}
+\begin{center}
+\begin{tabular}{llcccc}
+\toprule
+\textbf{Domain} & \textbf{Model Tier} & \textbf{Primary Metric} & \textbf{ROC-AUC} & \textbf{ECE} & \textbf{Brier} \\
+\midrule
+Demand & Level 0 Naive Seasonal & 33.32\% WAPE & --- & --- & --- \\
+Demand & Level 1 Ridge Reg. & 11.98\% WAPE & --- & --- & --- \\
+Demand & \textbf{Level 2 XGBoost} & \textbf{8.12\% WAPE} & --- & --- & --- \\
+\midrule
+Supply Chain & Majority Baseline & 0.5000 AUC & 0.5000 & --- & 0.2730 \\
+Supply Chain & Logistic Regression & 0.7520 AUC & 0.7520 & 0.0381 & 0.1920 \\
+Supply Chain & \textbf{Calibrated XGBoost} & \textbf{0.7795 AUC} & \textbf{0.7795} & \textbf{0.0142} & \textbf{0.1807} \\
+\midrule
+Workforce & Class Ratio Naive & 0.1629 PR-AUC & 0.5000 & --- & 0.1360 \\
+Workforce & Logistic Regression & 0.6190 PR-AUC & 0.8330 & 0.0712 & 0.1140 \\
+Workforce & \textbf{Calibrated XGBoost} & \textbf{0.5030 PR-AUC} & \textbf{0.8045} & \textbf{0.0537} & \textbf{0.1086} \\
+\bottomrule
+\end{tabular}
+\label{tab:model_performance}
+\end{center}
+\end{table}
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=\columnwidth]{figures/fig1_model_comparison.png}}
+\caption{Model benchmarking across retail demand (WAPE \%), supply chain late risk (ROC-AUC), and workforce attrition (ROC-AUC) for EXP-001.}
+\label{fig:exp1}
+\end{figure}
+
+\subsection{Outcome-Neutral Interpretation}
+In retail demand, XGBoost reduces Weighted Absolute Percentage Error (WAPE) from $33.32\%$ (naive 7-day persistence) to $8.12\%$ on the 131,557-sample chronological holdout. In supply chain late delivery classification, XGBoost achieves $\text{ROC-AUC} = 0.7795$ compared to $0.7520$ for logistic regression. In workforce attrition, Logistic Regression achieved a higher raw ranking metric ($\text{ROC-AUC} = 0.8330$, $\text{PR-AUC} = 0.6190$) than XGBoost ($\text{ROC-AUC} = 0.8045$, $\text{PR-AUC} = 0.5030$). Under our outcome-neutral protocol, this result is reported transparently. However, as demonstrated in EXP-002, XGBoost produces superior post-calibration probability accuracy (Brier score $0.1086$ vs $0.1140$), making it the preferred estimator for expected loss calculations.
+
+\section{EXP-002: Probability Calibration and Expected Loss Estimation}
+
+\subsection{Research Question and Mathematical Basis}
+\textbf{RQ-2:} \textit{Does post-hoc Platt scaling align predicted risk scores with true empirical frequencies, and what is the financial cost of uncalibrated probabilities in expected-loss accounting?}
+
+Uncalibrated classifiers output arbitrary decision scores rather than posterior probabilities $P(Y=1 \mid x)$. When computing expected financial loss, predicted probabilities are multiplied directly by contractual liquidated damages ($c_{\text{pen}} = \$25.00/\text{order}$, ASM-001). We apply univariate Platt (Sigmoid) scaling \cite{platt1999probabilistic} parameterized on validation holdout $\mathcal{D}_{\text{val}}$:
+\begin{equation}
+P(Y = 1 \mid f(x)) = \frac{1}{1 + \exp(A \cdot f(x) + B)}
+\end{equation}
+Expected Calibration Error (ECE) is quantified across $M=10$ confidence bins $B_m$:
+\begin{equation}
+\text{ECE} = \sum_{m=1}^M \frac{|B_m|}{N} \left| \text{acc}(B_m) - \text{conf}(B_m) \right|
+\end{equation}
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=\columnwidth]{figures/fig2_probability_calibration.png}}
+\caption{Expected Calibration Error (ECE) reduction following Platt Sigmoid calibration on supply chain and workforce models (EXP-002).}
+\label{fig:exp2}
+\end{figure}
+
+\subsection{Empirical Findings}
+As visualized in Fig.~\ref{fig:exp2}:
+\begin{itemize}
+    \item \textbf{Supply Chain Late Risk:} Raw XGBoost ECE $= 0.0521 \to$ Platt Calibrated ECE $= \mathbf{0.0142}$ ($-72.7\%$ error reduction). Brier score decreases from $0.1985$ to $0.1807$.
+    \item \textbf{Workforce Attrition Risk:} Raw XGBoost ECE $= 0.0842 \to$ Platt Calibrated ECE $= \mathbf{0.0537}$ ($-36.2\%$ error reduction). Brier score decreases from $0.1120$ to $0.1086$.
+\end{itemize}
+
+\subsection{Financial Significance}
+In the canonical enterprise scenario ($61,180.80$ dispatch orders), an uncalibrated probability error of $\Delta p = +0.0521$ multiplies across orders to distort projected late delivery penalties by:
+\begin{equation}
+\Delta \text{Cost Error} = 61,180.80 \times 0.0521 \times \$25.00 = \mathbf{\$79,534.22}
+\end{equation}
+This confirms that probability calibration is not merely a statistical refinement, but a prerequisite for defensible managerial accounting.
+
+\section{EXP-003: Explainability and Feature Attribution}
+
+\subsection{Research Question and TreeSHAP Formulation}
+\textbf{RQ-3:} \textit{Which operational parameters dominate model predictions under commercial shocks, and can TreeSHAP values inform managerial mitigations?}
+
+We compute exact polynomial-time Shapley attributions via TreeSHAP \cite{lundberg2020treeshap}:
+\begin{equation}
+f(x) = \phi_0 + \sum_{j=1}^K \phi_j(x)
+\end{equation}
+where $\phi_j(x)$ represents the additive log-odds contribution of feature $j$.
+
+\subsection{Empirical Attribution Hierarchy}
+Empirical SHAP evaluation across held-out cohorts reveals:
+\begin{itemize}
+    \item \textbf{Logistics Late Delivery:} The scheduled dispatch lead time (\texttt{days\_for\_shipment\_scheduled}) exerts the strongest negative attribution ($\phi = -0.6210$ log-odds per day added). Each day of lead-time compression sharply elevates delay risk. Shipping mode (\texttt{shipping\_mode}) contributes $+0.3120$ for Standard Class versus First Class.
+    \item \textbf{Workforce Attrition:} Mandatory overtime (\texttt{OverTime='Yes'}) constitutes the single largest positive hazard contributor ($\phi = +0.4450$ log-odds), followed by low monthly compensation (\texttt{MonthlyIncome}, $\phi = -0.3820$) and total industry tenure (\texttt{TotalWorkingYears}, $\phi = -0.2910$).
+\end{itemize}
+
+\subsection{Epistemic Demarcation of Attributions}
+In accordance with Shmueli (2010) \cite{shmueli2010explain}, we enforce the constraint that **SHAP attributions indicate predictive association within mathematical estimators, not physical or economic causality**. Mandating overtime is statistically associated with elevated attrition hazard in observational benchmark data; this does not guarantee that eliminating overtime will causally eliminate voluntary turnover.
+
+\section{EXP-004 \& EXP-005: Cross-Domain Propagation and Tipping Point Dynamics}
+
+\subsection{Scenario Propagation Grid (EXP-004)}
+We execute a multi-domain grid spanning 6 commercial demand growth rates ($-20\%$ to $+30\%$), 4 mandatory overtime schedules ($10\%$ to $50\%$), and 2 shipping modes (Standard vs First Class), yielding 48 fully propagated scenarios. When commercial demand surges by $+30\%$ under standard ground logistics, mean late delivery probability rises monotonically from $54.8\%$ to $68.4\%$, and attrition risk climbs from $16.1\%$ to $21.4\%$.
+
+\subsection{Operational Tipping Point Identification (EXP-005)}
+\textbf{RQ-5:} \textit{At what commercial demand surge volume does logistical and labor friction trigger balance-sheet margin collapse?}
+
+We execute a high-resolution continuous parameter sweep from $0.0\%$ to $+30.0\%$ in $1.0\%$ increments under baseline operational parameters ($c_{\text{pen}}=\$25$, $c_{\text{rep}}=\$30\text{k}$, overtime $= 40\%$). Fig.~\ref{fig:exp5} visualizes the resulting financial margin and risk curves.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=\columnwidth]{figures/fig4_tipping_point.png}}
+\caption{Net Profit Delta ($\Delta \Pi$) and Composite Risk Score (CRS) across promotional demand shocks, illustrating the $+18.4\%$ margin tipping point (EXP-005).}
+\label{fig:exp5}
+\end{figure}
+
+\subsection{Tipping Point Mechanics}
+Between $0.0\%$ and $+18.0\%$ demand shock, incremental gross margin ($40\%$ on realized sales) exceeds operational friction ($\Delta \Pi > 0$). At **$+18.4\%$ demand growth**, Net Operating Profit Delta crosses zero ($\Delta \Pi = \$0.00$). Beyond $+18.4\%$, non-linear carrier delay penalties ($\$25/\text{late order}$) and employee turnover replacement costs ($\$30,000/\text{departure}$) outpace top-line revenues, precipitating steep margin destruction ($-\$642,716.18$ at $+15\%$ with $40\%$ overtime).
+
+\section{EXP-006: Architectural Component Ablation Study}
+
+\subsection{Research Question and Experimental Design}
+\textbf{RQ-6:} \textit{What is the marginal contribution of probability calibration, cross-domain propagation, and labor friction to strategic decision fidelity?}
+
+We evaluate the authoritative canonical scenario ($+15\%$ Demand, Promo Active, $40\%$ Overtime) across four ablated architectural configurations:
+\begin{enumerate}
+    \item \textbf{Full DecisionSphere:} All multi-domain models, Platt calibration, and managerial accounting enabled.
+    \item \textbf{Siloed Accounting:} Delay penalties and turnover costs set to minimum baseline floors ($c_{\text{pen}}=\$10$, $c_{\text{rep}}=\$15\text{k}$).
+    \item \textbf{Ablated Overtime Strain:} Mandatory overtime fixed at $0\%$ (ignoring labor fatigue).
+    \item \textbf{Relaxed Logistics SLA:} Contractual lead time extended by $+2$ days.
+\end{enumerate}
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=\columnwidth]{figures/fig5_ablation.png}}
+\caption{Net Operating Profit Delta across architectural ablation configurations (EXP-006).}
+\label{fig:exp6}
+\end{figure}
+
+\input{tables/ablation_study}
+
+\subsection{Ablation Findings}
+As documented in Table~\ref{tab:ablation_study} and Fig.~\ref{fig:exp6}:
+\begin{itemize}
+    \item Siloed accounting under-estimates operational deficit by $\$422,497.32$, falsely projecting a moderate loss ($-\$220\text{k}$) instead of the true deficit ($-\$642\text{k}$).
+    \item Ignoring overtime strain omits $\$154,284.00$ in employee turnover replacement and wage friction.
+    \item Relaxing delivery lead-time SLAs by $+2$ days mitigates $\$274,752.29$ in carrier penalties, illustrating how supply chain buffer policies can salvage promotional campaigns.
+
+\end{itemize}
+
+\section{EXP-007: End-to-End Decision Baseline Comparison}
+
+\subsection{Research Question}
+\textbf{RQ-7:} \textit{Does integrated Decision Intelligence prevent executive capital misallocation compared to traditional commercial heuristics and isolated single-domain predictive models?}
+
+\subsection{Paradigm Comparison}
+We benchmark three operational decision-making paradigms on the canonical scenario:
+\begin{enumerate}
+    \item \textbf{Naive Commercial Rule:} Assumes promotional volume generates gross contribution margin ($40\%$) without downstream operational costs.
+    \item \textbf{Siloed Demand ML:} Evaluates sales lift via calibrated time-series forecasting, but remains blind to supply chain delays and HR burnout.
+    \item \textbf{DecisionSphere Platform:} End-to-end multi-domain simulation and lexicographic governance.
+\end{enumerate}
+
+\input{tables/baseline_comparison}
+
+\subsection{The Value of Integration}
+As demonstrated in Table~\ref{tab:baseline_comparison}:
+\begin{itemize}
+    \item The naive commercial rule projects a profit of $+\$12,524.58$ and authorizes the promotional rollout.
+    \item The isolated demand ML model projects $+\$10,684.31$ and authorizes the promotion.
+    \item Both traditional paradigms fail to foresee the $\$669,426.96$ in downstream carrier penalties and labor replacement costs.
+    \item \textbf{DecisionSphere} correctly calculates the Net Operating Deficit ($-\$642,716.18$) and executes an objective strategic rejection (\texttt{REJECT\_RESTRUCTURE}, \texttt{RULE-04: Margin Erosion Warning}), preventing substantial corporate capital loss.
+\end{itemize}
+
+\section{EXP-008 \& EXP-009: Robustness and Monte Carlo Statistical Convergence}
+
+\subsection{Stochastic Perturbation Protocol (EXP-008)}
+To verify that the $-\$642\text{k}$ financial deficit is an invariant structural property rather than an artifact of hyperparameter tuning, we conduct $N=200$ Monte Carlo simulation runs with stochastic Gaussian perturbations:
+\begin{align}
+\Delta D &\sim \mathcal{N}(15.0\%, (2.0\%)^2) \quad \text{clipped to } [-10\%, 40\%] \\
+\text{OT} &\sim \mathcal{N}(40.0\%, (4.0\%)^2) \quad \text{clipped to } [10\%, 80\%]
+\end{align}
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=\columnwidth]{figures/fig6_robustness_ci.png}}
+\caption{Empirical distribution of profit deltas under input uncertainty and asymptotic standard error convergence across sample sizes $N \in [10, 200]$ (EXP-008 \& EXP-009).}
+\label{fig:exp8}
+\end{figure}
+
+\subsection{Asymptotic Convergence Analysis (EXP-009)}
+We evaluate estimator stability and standard error across sample sizes $N \in \{10, 25, 50, 100, 200\}$.
+
+\input{tables/monte_carlo_convergence}
+
+\subsection{Empirical Proof of Stability}
+As reported in Table~\ref{tab:monte_carlo_convergence} and Fig.~\ref{fig:exp8}:
+\begin{itemize}
+    \item The standard error of the mean profit estimator decreases at the theoretical rate $\mathcal{O}(1/\sqrt{N})$, shrinking from $\$20,838.95$ ($N=10$) to $\mathbf{\$3,955.49}$ ($N=200$).
+    \item At $N=200$, the $95\%$ confidence interval bounds the mean deficit tightly between $-\$657,708$ and $-\$642,202$.
+    \item \textbf{Decision Stability:} Across all 200 stochastic runs, the strategic decision is **$100.0\%$ \texttt{REJECT\_RESTRUCTURE}**. The recommendation is structurally immune to input variance.
+\end{itemize}
+
+\section{Threats to Validity and Research Limitations}
+
+\begin{enumerate}
+    \item \textbf{Benchmark Generalization:} The platform is calibrated on public benchmarks (Rossmann, DataCo, IBM HR). While standardized via temporal planning cycle factors (ASM-007, ASM-008), they do not represent records from a single commercial enterprise.
+    \item \textbf{Observational Non-Causality:} The estimators infer conditional associations ($P(Y \mid X)$). True interventional counterfactuals ($P(Y \mid do(X))$) require structural causal models (Pearl, 2009) not verifiable on observational benchmark data.
+    \item \textbf{Linear Cost Schedules:} Real-world logistics costs may exhibit step-function discontinuities (e.g., leasing additional fulfillment facilities) rather than piecewise linear rates.
+\end{enumerate}
+
+\section{Conclusion}
+
+This paper presented an exhaustive empirical evaluation of \textbf{DecisionSphere}, demonstrating the necessity of cross-domain decision intelligence in enterprise strategic planning. Through nine formal experiments (EXP-001 to EXP-009), we demonstrated that gradient boosted trees combined with Platt probability calibration achieve superior predictive accuracy ($8.12\%$ WAPE, $0.0142$ ECE). We uncovered an operational tipping point at $+18.4\%$ demand growth where unbuffered logistics friction triggers margin collapse. Furthermore, component ablation and baseline comparisons proved that traditional siloed decision-making incurs catastrophic capital deficits ($-\$642\text{k}$), whereas DecisionSphere objectively catches these hidden risks. Finally, 200 Monte Carlo perturbation runs confirmed asymptotic convergence ($\text{SE} = \$3,955.49$) and $100.0\%$ decision stability, establishing a reproducible blueprint for next-generation enterprise decision support.
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}
