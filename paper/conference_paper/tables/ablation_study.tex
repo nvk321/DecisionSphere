@@ -1,0 +1,16 @@
+\begin{table}[htbp]
+\caption{Architectural Component Ablation Study (EXP-006)}
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Configuration} & $\Delta \Pi$ \textbf{(USD)} & \textbf{CRS} & \textbf{Strategic Decision} & \textbf{Decision Divergence} \\
+\midrule
+\textbf{Full DecisionSphere} & \textbf{-\$642,716.18} & \textbf{37.48} & \texttt{REJECT\_RESTRUCTURE} & Ground Truth Baseline \\
+Siloed Accounting (Min Penalties) & -\$220,218.86 & 37.48 & \texttt{REJECT\_RESTRUCTURE} & Profit under-estimated by \$422k \\
+Ablated Overtime Strain (0\% OT) & -\$488,432.18 & 34.03 & \texttt{REJECT\_RESTRUCTURE} & Omits employee turnover drag \\
+Relaxed Logistics SLA (+2 Days) & -\$367,963.89 & 34.94 & \texttt{REJECT\_RESTRUCTURE} & Mitigates \$274k carrier penalties \\
+\bottomrule
+\end{tabular}
+\label{tab:ablation_study}
+\end{center}
+\end{table}

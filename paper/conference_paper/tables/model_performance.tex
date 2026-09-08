@@ -1,0 +1,23 @@
+\begin{table}[htbp]
+\caption{Empirical Model Performance and Calibration Benchmarks}
+\begin{center}
+\begin{tabular}{llcccc}
+\toprule
+\textbf{Domain} & \textbf{Model} & \textbf{Primary Metric} & \textbf{ROC-AUC} & \textbf{ECE} & \textbf{Brier} \\
+\midrule
+Demand & Naive Seasonal & 33.32\% WAPE & --- & --- & --- \\
+Demand & Ridge Regression & 11.98\% WAPE & --- & --- & --- \\
+Demand & \textbf{XGBoost Regressor} & \textbf{8.12\% WAPE} & --- & --- & --- \\
+\midrule
+Supply Chain & Majority Class & 0.5000 AUC & 0.5000 & --- & 0.2730 \\
+Supply Chain & Logistic Regression & 0.7520 AUC & 0.7520 & 0.0381 & 0.1920 \\
+Supply Chain & \textbf{Calibrated XGBoost} & \textbf{0.7795 AUC} & \textbf{0.7795} & \textbf{0.0142} & \textbf{0.1807} \\
+\midrule
+Workforce & Class Ratio Naive & 0.1629 PR-AUC & 0.5000 & --- & 0.1360 \\
+Workforce & Logistic Regression & 0.6190 PR-AUC & 0.8330 & 0.0712 & 0.1140 \\
+Workforce & \textbf{Calibrated XGBoost} & \textbf{0.5030 PR-AUC} & \textbf{0.8045} & \textbf{0.0537} & \textbf{0.1086} \\
+\bottomrule
+\end{tabular}
+\label{tab:model_performance}
+\end{center}
+\end{table}
