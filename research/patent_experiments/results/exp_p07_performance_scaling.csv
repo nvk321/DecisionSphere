@@ -1,0 +1,6 @@
+Batch_Size_N,Total_Latency_Sec,Mean_Latency_Per_Run_Ms,Memory_Allocated_KB,Throughput_Scenarios_Per_Sec
+1,1.0875,1087.47,126.48,0.92
+5,4.9691,993.83,142.33,1.01
+10,9.6476,964.76,171.27,1.04
+20,20.4993,1024.97,166.0,0.98
+30,28.3671,945.57,185.72,1.06

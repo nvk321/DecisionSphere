@@ -1,0 +1,11 @@
+Domain,Feature_Name,Attribution_Magnitude,Causal_Interpretation
+Supply Chain Delivery Risk,days_for_shipment_scheduled,0.7476,Observed Statistical Association (Tier 2 PREDICTED)
+Supply Chain Delivery Risk,shipping_mode,0.678,Observed Statistical Association (Tier 2 PREDICTED)
+Supply Chain Delivery Risk,type,0.3842,Observed Statistical Association (Tier 2 PREDICTED)
+Supply Chain Delivery Risk,order_hour,0.1641,Observed Statistical Association (Tier 2 PREDICTED)
+Supply Chain Delivery Risk,order_country,0.0778,Observed Statistical Association (Tier 2 PREDICTED)
+Workforce Attrition Risk,OverTime,0.445,Observed Statistical Association (Tier 2 PREDICTED)
+Workforce Attrition Risk,StockOptionLevel,0.3434,Observed Statistical Association (Tier 2 PREDICTED)
+Workforce Attrition Risk,MonthlyIncome,0.2698,Observed Statistical Association (Tier 2 PREDICTED)
+Workforce Attrition Risk,Age,0.2413,Observed Statistical Association (Tier 2 PREDICTED)
+Workforce Attrition Risk,JobRole,0.2398,Observed Statistical Association (Tier 2 PREDICTED)

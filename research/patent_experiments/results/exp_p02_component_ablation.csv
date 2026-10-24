@@ -1,0 +1,7 @@
+Ablation_Configuration,Net_Profit_Delta_USD,Composite_Risk_Score,Decision_Category,Decision_Flipped,Impact_Analysis
+Config 0: Full DecisionSphere,-642716.18,37.48,REJECT_RESTRUCTURE,False,Optimal Governance
+Config 1: Ablate Cross-Domain Coupling,26710.78,0.0,PROCEED,True,Severe False-Positive Approval
+Config 2: Ablate Workforce Feedback,-458504.18,35.2,REJECT_RESTRUCTURE,False,Underestimates Labor Friction by $184k
+Config 3: Ablate Logistics Penalties,-173527.69,38.4,REJECT_RESTRUCTURE,False,Underestimates Carrier Fines by $469k
+Config 4: Equal CRS Domain Weights,-642716.18,34.48,REJECT_RESTRUCTURE,False,Slight Distortion in Risk Gating Sensitivity
+Config 5: Pure Financial Gating (No CRS),-642716.18,0.0,REJECT_RESTRUCTURE,False,Blinded to Non-Financial Organizational Burnout

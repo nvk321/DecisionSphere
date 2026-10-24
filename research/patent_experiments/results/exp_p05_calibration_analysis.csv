@@ -1,0 +1,3 @@
+Domain,Model,Method,ECE,Brier_Score,Downstream_Penalty_Distortion_USD,Risk_Valuation_Error
+Supply Chain Late Delivery Risk,XGBoost Classifier,Raw Uncalibrated Margin,0.0521,0.1985,37188.24,High Distortion (+/-$37.1k)
+Supply Chain Late Delivery Risk,XGBoost Classifier,Platt Sigmoid Calibrated,0.0142,0.1872,10135.76,Bounded Low Error (+/-$10.1k)

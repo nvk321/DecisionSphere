@@ -1,0 +1,10 @@
+{
+  "sample_size_N": 50,
+  "mean_profit_delta_usd": -640628.28,
+  "std_dev_profit_delta_usd": 73173.03,
+  "standard_error_usd": 10348.23,
+  "confidence_interval_95_pct_low": -660910.81,
+  "confidence_interval_95_pct_high": -620345.75,
+  "decision_stability_pct": 100.0,
+  "stability_category": "100.0% REJECT_RESTRUCTURE"
+}

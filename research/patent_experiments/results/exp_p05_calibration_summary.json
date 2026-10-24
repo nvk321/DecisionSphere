@@ -1,0 +1,8 @@
+{
+  "supply_chain_raw_ece": 0.0521,
+  "supply_chain_sigmoid_ece": 0.0142,
+  "ece_reduction_pct": 72.74,
+  "downstream_penalty_distortion_raw_usd": 37188.24,
+  "downstream_penalty_distortion_cal_usd": 10135.76,
+  "contractual_error_avoidance_usd": 27052.48
+}

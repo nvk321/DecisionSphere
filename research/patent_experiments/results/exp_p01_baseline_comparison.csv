@@ -1,0 +1,3 @@
+Paradigm,Cross_Domain_Coupling,Probability_Calibration,Projected_Profit_USD,Operational_Friction_USD,Decision_Outcome,Decision_Error
+Siloed Commercial Planning (Baseline),None (Isolated Demand),None,171306.25,0.0,APPROVE_PROMOTION,False Positive Approval (Fatal Value Destruction)
+DecisionSphere Integrated Intelligence,13-Stage DAG State-Space,Platt Sigmoid (Sigmoid CV),-642716.18,653400.49,REJECT_RESTRUCTURE,Zero Error (Accurately Halts Value Destruction)
