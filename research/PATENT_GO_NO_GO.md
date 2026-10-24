@@ -17,7 +17,7 @@
 ---
 
 ## 2. Proposed Invention (One Precise Paragraph)
-A computer-implemented decision intelligence architecture and method that couples heterogeneous, independently trained statistical machine learning estimators into an acyclic state-space dependency graph $\mathcal{G} = (\mathcal{V}, \mathcal{E})$ with an explicit 24-dimensional continuous state vector $S_t \in \mathbb{R}^{24}$, wherein uncalibrated classification decision margins from tabular tree models are transformed via parametric logistic sigmoid calibration to bound expected calibration error (reducing ECE by $72.7\%$) prior to ingestion into downstream non-linear step-loss penalty functions, and wherein state transitions are executed deterministically along topological sort orders with cryptographic SHA-256 model digest verification, discovering operational margin collapse tipping points ($\tau^* = +18.4\%$) and enforcing lexicographic solvency feasibility gating without generative hallucination.
+A computer-implemented decision intelligence architecture and method that couples heterogeneous, independently trained statistical machine learning estimators into an acyclic state-space dependency graph $\mathcal{G} = (\mathcal{V}, \mathcal{E})$ with an explicit 24-dimensional continuous state vector $S_t \in \mathbb{R}^{24}$, wherein uncalibrated classification decision margins from tabular tree models are transformed via parametric logistic sigmoid calibration to bound expected calibration error (reducing ECE by $72.7\%$) prior to ingestion into downstream non-linear step-loss penalty functions, and wherein state transitions are executed deterministically along topological sort orders with cryptographic SHA-256 model digest verification, discovering parameter-sensitive operational margin collapse tipping points (such as the verified $+9.67\%$ unconstrained baseline break-even root and $+18.4\%$ under relaxed logistics SLAs) and enforcing lexicographic solvency feasibility gating without generative hallucination.
 
 ---
 
@@ -29,7 +29,7 @@ A computer-implemented decision intelligence architecture and method that couple
 3. **Continuous 24-Dimensional Scenario State Vector $S_t \in \mathbb{R}^{24}$:**  
    A strongly typed mathematical state tensor (`src/scenario/state.py`) capturing physical sales run rates, logistics risk, workforce burnout, accounting balances, and operational risk indices with contiguous float64 serialization and exact Euclidean state distance calculation.
 4. **Automated Operating Margin Tipping-Point Discovery Operator:**  
-   An algorithmic bisection search mechanism (`src/scenario/propagation.py`) identifying the invariant commercial shock threshold ($\tau^* = +18.4\%$) where operational carrier fines and employee replacement costs exceed top-line expansion.
+   An algorithmic bisection search mechanism (`src/scenario/propagation.py`) identifying parameter-sensitive commercial shock thresholds where operational carrier fines and employee replacement costs exceed top-line expansion (discovering the $+9.67\%$ unconstrained break-even root, or $+18.4\%$ under relaxed logistics SLA parameterization).
 5. **Six-Tier Epistemic Boundary Control with Cryptographic Model Digests:**  
    Compile-time schema demarcation (`OBSERVED`, `PREDICTED`, `ASSUMED`, `PROPAGATED`, `CALCULATED`, `RECOMMENDED`) paired with runtime SHA-256 digest re-hashing on disk binaries (`.joblib`), guaranteeing bit-for-bit reproducibility and halting execution upon unauthorized model tampering.
 

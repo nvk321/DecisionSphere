@@ -120,7 +120,7 @@ Based on our forensic search across 25 prior-art records (`research/PATENT_PRIOR
 
 ## 5. The Smallest Legitimate Technical Improvement Needed
 
-To elevate DecisionSphere from an "application combining existing tools" to an **ironclad, defensible patent candidate**, we must formalize the **State-Space Dependency Engine** in code:
+To elevate DecisionSphere from an "application combining existing tools" to a **defensible patent candidate subject to professional patentability review**, we must formalize the **State-Space Dependency Engine** in code:
 
 ### Technical Improvement Package:
 1. **Explicit State-Space Dependency Graph (`src/scenario/graph.py`)**:

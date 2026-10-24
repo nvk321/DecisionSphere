@@ -228,8 +228,8 @@ As recorded in `research/EXPERIMENT_REGISTRY.md` and verified on disk:
 ---
 
 ## 20. Technical Advantages
-1. **Guaranteed Bounded Propagation Error:** Eliminates the tens of thousands of dollars in compounding distortion caused by uncalibrated model outputs.
-2. **Deterministic Acyclic Execution:** Graph topology $\mathcal{G}$ guarantees zero deadlocks, zero circular recursions, and reproducible execution.
+1. **Mathematically Bounded Propagation Error:** Eliminates the tens of thousands of dollars in compounding distortion caused by uncalibrated model outputs.
+2. **Deterministic Acyclic Execution:** Graph topology $\mathcal{G}$ enforces zero deadlocks, zero circular recursions, and reproducible execution.
 3. **Anti-Hallucination Governance:** Six-tier epistemic boundary completely eliminates the numerical hallucinations endemic to generative LLM planning tools.
 4. **Cryptographic Anti-Tamper Security:** Instant detection of unauthorized model weight modification via SHA-256 digests.
 5. **High Computational Efficiency:** Sub-second execution enables high-resolution continuous sensitivity sweeps without combinatorial solver overhead.

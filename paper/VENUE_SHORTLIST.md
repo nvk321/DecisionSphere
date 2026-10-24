@@ -61,7 +61,7 @@ The publication strategy for DecisionSphere is bifurcated into two tracks:
 - **Scope Alignment:** Strong on operations research, supply chain risk, logistics management, and workforce scheduling.
 - **Page Limit:** 5 pages standard (6 maximum).
 - **Review Process:** Peer review (acceptance rate $\approx 50\%$).
-- **Assessment:** Very realistic acceptance probability for an undergraduate engineering team with a working empirical system.
+- **Assessment:** Conference submission is currently the strongest realistic academic route based on the project's present evidence, but acceptance cannot be reliably predicted.
 
 #### 2. International Conference on Advanced Information Systems Engineering (CAiSE) — Industry/Forum Track
 - **Publisher:** Springer (Lecture Notes in Computer Science — LNCS).

@@ -677,7 +677,7 @@ DecisionSphere directly advances **United Nations Sustainable Development Goal 9
 - **Core Defensible Research Contributions:**
   1. The 6-tier epistemic hierarchy preventing predictive AI from hallucinating financial statements.
   2. Demonstrating that uncalibrated probabilities induce massive expected-loss calculation errors in operations research.
-  3. The formalization of operational margin tipping points (+18.4%) under unbuffered commercial shocks.
+  3. The formalization of parameter-sensitive operational margin tipping points (+9.67% unconstrained break-even; +18.4% under relaxed logistics SLAs) under unbuffered commercial shocks.
 
 ### 43.2 Intellectual Property & Patent Readiness Analysis
 
@@ -685,7 +685,7 @@ DecisionSphere directly advances **United Nations Sustainable Development Goal 9
 - **Formal Title:** *A Computer-Implemented System and Method for Calibrated Multi-Domain State Propagation and Non-Linear Operational Risk Evaluation Across Heterogeneous Machine Learning Estimators.*
 - **Technical Field:** Enterprise decision intelligence, state-space operational modeling, and calibrated machine learning pipeline execution.
 - **The Core Technical Problem:** Raw machine learning estimators produce uncalibrated margins that induce catastrophic compounding error when mapped into non-linear downstream penalty functions (e.g., contractual delay fines and employee turnover costs), while decoupled multi-domain analytics suffer from unverified state transitions and circular deadlocks.
-- **The Inventive Solution:** A computer-implemented Directed Acyclic Graph (DAG) state-space dependency engine $\mathcal{G} = (\mathcal{V}, \mathcal{E})$ with an explicit 24-dimensional continuous state vector $S_t \in \mathbb{R}^{24}$, coupled to a Platt sigmoid probability calibration pipeline and cryptographic runtime model hash verification (SHA-256), guaranteeing bounded propagation error, deterministic reproducibility, and automated margin tipping-point discovery.
+- **The Inventive Solution:** A computer-implemented Directed Acyclic Graph (DAG) state-space dependency engine $\mathcal{G} = (\mathcal{V}, \mathcal{E})$ with an explicit 24-dimensional continuous state vector $S_t \in \mathbb{R}^{24}$, coupled to a Platt sigmoid probability calibration pipeline and cryptographic runtime model hash verification (SHA-256), enforcing mathematically bounded propagation error, deterministic reproducibility, and automated margin tipping-point discovery.
 
 #### 43.2.2 Prior-Art Landscape & Differentiation (27 Prior-Art References Analyzed)
 A forensic prior-art investigation was conducted across USPTO, Espacenet, WIPO, IEEE Xplore, and ACM DL (`patent/PRIOR_ART_MATRIX.csv`):
@@ -707,7 +707,7 @@ A forensic prior-art investigation was conducted across USPTO, Espacenet, WIPO, 
   - Steady-state batch latency ($275\text{ ms} - 945\text{ ms}$): **VERIFIED**.
   - Pure state vector memory ($304\text{ bytes}$; $192\text{ KB}$ for 1,000 scenarios): **PARTIALLY VERIFIED** (Vector buffer vs full process heap).
 - **Statutory Go/No-Go Decision (`patent/PATENT_GO_NO_GO.md`):**
-  - **Final Classification:** `PATENT-CANDIDATE — TECHNICAL CORE DEFENSIBLE` (Subject to strict exclusion of business logic and review by the institutional IPR cell).
+  - **Final Classification:** `PATENT CANDIDATE SUBJECT TO PROFESSIONAL PATENTABILITY REVIEW` (Requires VIT IPR/patent-agent review before any filing decision).
 
 #### 43.2.4 Empirical Experimental Proof (EXP-001 through EXP-010 / EXP-P01 through EXP-P07)
 All research and patent assertions are verified by empirical experiments on disk:
@@ -744,8 +744,8 @@ A complete peer-reviewed academic publication package has been prepared:
 - `paper/figures/`: Complete 300 DPI publication-quality figures.
 
 #### 43.2.7 IP Precedence & Release Directive
-1. **Pre-Filing Secrecy:** All technical formulations of the state-space dependency graph (`src/scenario/graph.py`), dynamic propagation operator (`src/scenario/propagation.py`), and calibrated probability coupling must remain strictly confidential in private repositories until the institutional IPR cell completes patent filing review.
-2. **Dual Publication Pathway:** Submit the patent package to the university IPR cell (CIPR). File the Indian Provisional Patent Application first. Immediately upon securing the official filing receipt and application number, the academic research manuscripts in `paper/` can be submitted to IEEE/ACM conferences and journals without compromising patent novelty.
+1. **Pre-Filing Secrecy & Repository Confidentiality:** All technical formulations of the state-space dependency graph (`src/scenario/graph.py`), dynamic propagation operator (`src/scenario/propagation.py`), and calibrated probability coupling must remain strictly confidential. The private GitHub repository must be treated as confidential project infrastructure and kept private until institutional IPR review is complete.
+2. **Dual Publication Pathway & Chronology:** IP/patent review and, if approved by the institutional IPR/patent professional, provisional filing should occur BEFORE public disclosure of the detailed invention. Once the official filing receipt and application number are secured, academic manuscripts in `paper/` can be submitted to conferences or journals without risking patent priority.
 
 ---
 

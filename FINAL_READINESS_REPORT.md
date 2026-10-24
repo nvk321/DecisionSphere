@@ -62,7 +62,7 @@ All empirical results have been independently reproduced and validated from clea
 
 DecisionSphere establishes a rigorous methodological contribution at the intersection of applied machine learning, systems engineering, and management science:
 1. **Resolution of Epistemic Conflation (Shmueli 2010):** Formulates a concrete 6-tier epistemic hierarchy (`OBSERVED`, `PREDICTED`, `ASSUMED`, `PROPAGATED`, `CALCULATED`, `RECOMMENDED`), preventing non-causal statistical associations ($P(Y \mid X)$) from being masqueraded as structural causal mechanisms ($P(Y \mid do(X))$) or empirical accounting ground truth.
-2. **Coupling Calibration to Downstream Loss Functions:** Demonstrates for the first time in enterprise decision literature that probability calibration is not merely an abstract statistical metric, but a necessary condition for computing expected operational penalties, eliminating \$27,052.48 in contractual penalty distortion.
+2. **Coupling Calibration to Downstream Loss Functions:** Demonstrates empirically in enterprise decision modeling that probability calibration is a critical condition for computing expected operational penalties, eliminating \$27,052.48 in contractual penalty distortion.
 3. **Cross-Domain Ripple Modeling:** Formalizes the mathematical feedback between commercial sales volume, logistics fulfillment capacity, and workforce overtime burnout, bridging organizational silos through continuous state-space vectors in $\mathbb{R}^{24}$.
 
 ---
@@ -74,30 +74,30 @@ The statutory patentability evaluation under Section 3(k) of the Indian Patents 
 ```
 ================================================================================
 STATUTORY CLASSIFICATION:
-PATENT-CANDIDATE — TECHNICAL CORE DEFENSIBLE
-(Subject to Strict Exclusion of Business Logic and Review by Institutional IPR Cell)
+PATENT CANDIDATE SUBJECT TO PROFESSIONAL PATENTABILITY REVIEW
+(Requires Formal Clearance by Institutional IPR Cell / Registered Patent Counsel)
 ================================================================================
 ```
 
 - **Statutory Eligibility (Section 3(k) IPA & Alice § 101):**  
   - *Non-Statutory Ground (High Risk):* Claiming DecisionSphere as a "method for simulating business profitability" or "a promotional scenario planning platform" is 100% unpatentable as an abstract business method and mathematical calculation per se.
-  - *Defensible Technical Ground:* Claiming DecisionSphere as a **computer-implemented system and method for calibrated state-space propagation across heterogeneous machine learning estimators** is defensible. The technical problem solved is error amplification and state divergence in multi-model software execution; the technical effect is a verified 72.74% drop in Expected Calibration Error, bounding downstream propagation error within an empirical confidence envelope, executing across an acyclic DAG with $\mathcal{O}(N)$ computational complexity and cryptographic SHA-256 runtime verification.
-- **Novelty (Section 2(1)(j) IPA / 35 U.S.C. § 102):** High. Forensic review of 27 prior art patents and papers (o9 Solutions, Kinaxis, Palantir, Quantellia, SAP, IBM, Blue Yonder) confirms that no single prior art reference discloses the combination of post-hoc Platt calibration error bounding coupled to an acyclic state-space DAG orchestrating heterogeneous gradient boosted tree ensembles.
-- **Inventive Step (Section 2(1)(ja) IPA / 35 U.S.C. § 103):** Moderate-to-High. The inventive step relies entirely on the technical synergy between Platt calibration and non-linear penalty coupling, which is non-obvious to a person skilled in the art of software engineering or enterprise architecture.
+  - *Defensible Technical Ground:* Claiming DecisionSphere as a **computer-implemented system and method for calibrated state-space propagation across heterogeneous machine learning estimators** provides a viable technical basis. The technical problem addressed is error amplification and state divergence in multi-model software execution; the technical effect is a verified 72.74% drop in Expected Calibration Error, bounding downstream propagation error within an empirical confidence envelope, executing across an acyclic DAG with $\mathcal{O}(N)$ computational complexity and cryptographic SHA-256 runtime verification.
+- **Novelty (Section 2(1)(j) IPA / 35 U.S.C. § 102):** Forensic review of 27 prior art patents and papers (o9 Solutions, Kinaxis, Palantir, Quantellia, SAP, IBM, Blue Yonder) confirms that no single prior art reference discloses the exact combination of post-hoc Platt calibration error bounding coupled to an acyclic state-space DAG orchestrating heterogeneous gradient boosted tree ensembles. However, novelty must be formally confirmed by patent counsel.
+- **Inventive Step (Section 2(1)(ja) IPA / 35 U.S.C. § 103):** The inventive step relies on the specific technical synergy between Platt calibration and non-linear penalty coupling, which must be demonstrated as non-obvious to a person skilled in the art of software engineering.
 
 ---
 
 ## 6. Patent Risks
 
 1. **Section 3(k) Knee-Jerk Examiner Rejection:** Indian patent examiners frequently issue immediate Section 3(k) objections to any application mentioning revenue, costs, profit, or sales forecasts. Overcoming this requires registered patent agents to draft independent claims strictly in terms of data structures, execution graphs, margin transformations, and continuous state vectors, relegating financial calculations to dependent claims or disclaiming them.
-2. **Synthetic Dataset Coupling:** The prototype couples Rossmann (Germany), DataCo (Global), and IBM HR (US) benchmarks. While mathematically standardized via temporal cycles (`ASM-007`, `ASM-008`), an adversarial examiner could argue that the coupling parameters represent arbitrary heuristic assumptions rather than a physical or technical constraint.
-3. **Drafting Precision Overhead:** If claims are drafted too broadly ("a system for scenario planning"), the patent will be rejected under prior art (o9, Kinaxis); if drafted too narrowly, competitors can design around it by replacing Platt scaling with isotonic regression or modifying the 24-dimensional state indices.
+2. **Synthetic Dataset Coupling:** The prototype couples Rossmann (Germany), DataCo (Global), and IBM HR (US) benchmarks. While mathematically standardized via temporal cycles (`ASM-007`, `ASM-008`), an examiner could argue that the coupling parameters represent operational assumptions rather than an intrinsic physical or technical constraint.
+3. **Drafting Precision Overhead:** If claims are drafted too broadly ("a system for scenario planning"), the patent will be rejected under prior art (o9, Kinaxis); if drafted too narrowly, competitors can design around it by replacing Platt scaling with alternative calibrators or modifying the state indices.
 
 ---
 
 ## 7. Conference Readiness
 
-- **Status:** **100% COMPLETE & SUBMISSION-READY**
+- **Status:** **SUBMISSION-READY DRAFT**
 - **Manuscript:** `paper/DecisionSphere_Conference_Paper.tex` (6–8 pages, IEEEtran double-column format).
 - **Bibliography:** `paper/references.bib` (20+ verified citations, complete BibTeX entries).
 - **Visuals:** Complete 300 DPI publication-quality figures (`fig1_model_comparison.png`, `fig2_probability_calibration.png`, `fig4_tipping_point.png`, `fig5_ablation.png`, `fig6_robustness_ci.png`).
@@ -105,19 +105,19 @@ PATENT-CANDIDATE — TECHNICAL CORE DEFENSIBLE
   1. *IEEE International Conference on Systems, Man, and Cybernetics (IEEE SMC)*: Scope directly aligns with cybernetic operational feedback, human-machine decision systems, and state-space enterprise modeling.
   2. *IEEE International Conference on Technology and Engineering Management (IEEE TEMSCON)*: Scope directly aligns with engineering management, capital misallocation avoidance, and technology risk evaluation.
   3. *ACM International Conference on Information and Knowledge Management (CIKM) — Applied Research Track*: Values reproducible multi-domain data pipelines on tabular benchmarks.
-- **Acceptance Probability:** **HIGH (Estimated 75–85% at IEEE TEMSCON / SMC)** based on working empirical implementation, verified baseline comparisons, and complete ablation study.
+- **Evaluation:** Conference submission is currently the strongest realistic academic route based on the project's present evidence, but acceptance cannot be reliably predicted.
 
 ---
 
 ## 8. Journal Readiness
 
-- **Status:** **90% COMPLETE & MATURE DRAFT**
+- **Status:** **MATURE DRAFT**
 - **Manuscript:** `paper/DecisionSphere_Journal_Paper.tex` (14–18 pages, IEEEtran journal format).
 - **Depth & Expansions:** Contains formal state-space mathematical derivations ($S_t \in \mathbb{R}^{24}$, finite-difference Jacobian $J \in \mathbb{R}^{24 \times 3}$, bisection tipping-point discovery), detailed 27-reference literature survey, comprehensive threats to validity, and asymptotic Monte Carlo convergence analysis ($N=200$).
 - **Primary Target Venues:**
-  1. *IEEE Transactions on Engineering Management (IEEE TEM)*: Premier Q1 journal (Impact Factor ~4.6) at the intersection of engineering methodologies, data analytics, and managerial decision support. $0 author fee under subscription model.
-  2. *Decision Support Systems (Elsevier)*: Premier Q1 journal (Impact Factor ~6.7) dedicated to computer-implemented decision systems, multi-criteria risk scoring, and interactive scenario simulation.
-- **Acceptance Probability:** **MODERATE-TO-HIGH (Estimated 60–70% after 1–2 revision rounds)** due to the strength of the mathematical formalization and empirical rigor.
+  1. *IEEE Transactions on Engineering Management (IEEE TEM)*: Premier Q1 journal at the intersection of engineering methodologies, data analytics, and managerial decision support. $0 author fee under subscription model.
+  2. *Decision Support Systems (Elsevier)*: Premier Q1 journal dedicated to computer-implemented decision systems, multi-criteria risk scoring, and interactive scenario simulation.
+- **Evaluation:** Potentially publishable in journal venues, but requires deeper validation and venue-specific peer review; acceptance cannot be reliably predicted.
 
 ---
 
@@ -126,9 +126,9 @@ PATENT-CANDIDATE — TECHNICAL CORE DEFENSIBLE
 ### **PRIMARY ROUTE: Peer-Reviewed Conference Publication (IEEE SMC / IEEE TEMSCON)**
 
 **Evidence-Based Justification:**
-1. **Immediate Fit for TRL 4 Prototype:** The current implementation represents a functional, validated laboratory prototype with three connected open benchmark datasets. Academic conference reviewers evaluate whether the architecture is sound, the baselines are honest, the tests pass, and the empirical claims are verified. DecisionSphere satisfies 100% of these criteria with zero data leakage and 205 passing unit tests.
-2. **Defensibility of Scientific Claims:** Unlike patent examiners who scrutinize subject-matter eligibility exclusions under Section 3(k), academic reviewers celebrate the integration of machine learning with managerial accounting and decision intelligence.
-3. **Turnaround Velocity & Deliverables:** Peer-reviewed conference acceptance directly satisfies VIT BCSE497J Review 2 and Capstone publication rubrics within standard university academic calendars.
+1. **Immediate Fit for TRL 4 Prototype:** The current implementation represents a functional, validated laboratory prototype with three connected open benchmark datasets. Academic conference reviewers evaluate whether the architecture is sound, the baselines are honest, the tests pass, and the empirical claims are verified. DecisionSphere satisfies these criteria with zero data leakage and 205 passing unit tests.
+2. **Defensibility of Scientific Claims:** Unlike patent examiners who scrutinize subject-matter eligibility exclusions under Section 3(k), academic reviewers evaluate the integration of machine learning with managerial accounting and decision intelligence.
+3. **Turnaround Velocity & Deliverables:** Peer-reviewed conference evaluation provides timely feedback for Capstone evaluation within standard university academic calendars.
 
 ---
 
@@ -234,23 +234,45 @@ python research/patent_experiments/run_all_experiments.py
 
 ---
 
-## 16. Final Recommendation
-
+## 16. Final Recommendation & Readiness Strategy
+ 
 > **"If we had to submit this project today, which route currently has the strongest realistic chance: patent, conference, or journal?"**
-
-### **THE HONEST, EVIDENCE-BASED ANSWER:**
-
-**The Conference Route (IEEE SMC or IEEE TEMSCON) currently has the STRONGEST realistic chance of immediate acceptance (Estimated 75–85% probability).**
-
+ 
+### **THE EVIDENCE-BASED ASSESSMENT:**
+ 
+Conference submission is currently the strongest realistic academic route based on the project's present evidence, but acceptance cannot be reliably predicted.
+ 
 #### Why Conference Over Journal Today?
 While the journal manuscript (`paper/DecisionSphere_Journal_Paper.tex`) is comprehensive and deep, high-impact Q1 journals (IEEE TEM, Elsevier DSS) typically demand empirical evaluation on unified, single-enterprise proprietary production data rather than synthetic coupling across open benchmarks (Rossmann + DataCo + IBM HR). In a conference track (IEEE SMC or IEEE TEMSCON), the synthetic enterprise testbed is widely recognized as standard and acceptable for validating a laboratory prototype (TRL 4), especially given our transparent disclosure of coupling assumptions (`ASM-001` to `ASM-008`).
-
+ 
 #### Why Conference Over Patent as the Primary Dissemination Route?
 Under Indian Patent Law (Section 3(k) of the Patents Act, 1970), patent grant is never guaranteed and faces an adversarial 2-to-4 year prosecution cycle against aggressive business-method exclusions. While DecisionSphere contains a defensible technical core (calibrated probability-to-penalty bounding across an acyclic DAG), patent examination carries legal risk and requires professional patent counsel.
-
-#### THE OPTIMAL DUAL STRATEGY:
-1. **Step 1 (Week 1):** Submit `patent/` to the VIT CIPR / IPR cell and file an **Indian Provisional Patent Application** (securing an immediate priority date for ₹1,600–₹4,000 without requiring finalized claims).
-2. **Step 2 (Week 2):** Immediately upon securing the official Provisional Filing Receipt, submit `paper/DecisionSphere_Conference_Paper.tex` to **IEEE SMC** or **IEEE TEMSCON**.
-3. **Step 3 (Post-Conference):** Incorporate conference reviewer feedback, expand empirical benchmarks, and submit the extended 18-page manuscript (`paper/DecisionSphere_Journal_Paper.tex`) to **IEEE Transactions on Engineering Management**.
-
-This sequence guarantees complete IP priority protection, maximizes publication success, and provides the strongest possible academic credentials for B.Tech Capstone evaluation.
+ 
+#### Mandatory IP and Publication Chronology:
+IP/patent review and, if approved by the institutional IPR/patent professional, provisional filing should occur BEFORE public disclosure of the detailed invention. The private GitHub repository must be treated as confidential project infrastructure and kept strictly private.
+ 
+#### THE EVIDENCE-ALIGNED THREE-STAGE DISSEMINATION SEQUENCE:
+1. **Step 1 (IP Review & Provisional Filing):** Submit `patent/` to the VIT CIPR / institutional IPR cell for professional patentability assessment. If approved by institutional patent professionals, file an **Indian Provisional Patent Application** prior to any public disclosure.
+2. **Step 2 (Conference Submission):** Once the provisional application is filed and an official application receipt is secured, proceed with submitting `paper/DecisionSphere_Conference_Paper.tex` to **IEEE SMC** or **IEEE TEMSCON**.
+3. **Step 3 (Journal Extension):** Post-conference, incorporate external reviewer feedback, expand empirical validations on enterprise data lakes, and submit the extended journal manuscript (`paper/DecisionSphere_Journal_Paper.tex`) to a peer-reviewed journal venue.
+ 
+This sequence preserves IP priority before potential academic disclosure, aligns with institutional IPR governance, and establishes an evidence-based foundation for B.Tech Capstone evaluation.
+ 
+---
+ 
+## 17. Final Independent Assessments
+ 
+```
+================================================================================
+FINAL READINESS ASSESSMENT:
+ 
+PATENT:
+Potential patent candidate — requires VIT IPR/patent-agent review
+ 
+CONFERENCE:
+Strongest current academic submission route — acceptance not guaranteed
+ 
+JOURNAL:
+Potentially publishable but requires deeper validation/venue-specific review
+================================================================================
+```

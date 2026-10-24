@@ -13,8 +13,8 @@
 ```
 ================================================================================
 FINAL CLASSIFICATION:
-PATENT-CANDIDATE — TECHNICAL CORE DEFENSIBLE
-(Subject to Strict Exclusion of Business Logic and Review by Institutional IPR Cell)
+PATENT CANDIDATE SUBJECT TO PROFESSIONAL PATENTABILITY REVIEW
+(Requires VIT IPR/Patent-Agent Review Before Any Filing Decision)
 ================================================================================
 ```
 
@@ -49,7 +49,7 @@ The inventive step resides in the **specific technical mechanism of coupling pos
 
 ### 6. What technical effect is demonstrated?
 - **Calibration Error Bounding:** Platt scaling reduces Expected Calibration Error (ECE) from $0.0521$ to $0.0142$ (a **$72.74\%$ relative error reduction**), directly eliminating **$\$27,052.48$** in contractual SLA penalty calculation distortion (verified on DataCo holdout).
-- **Acyclic State Convergence:** Zero circular dependencies; Kahn topological sort length 11; guaranteed non-divergent execution (verified in `tests/test_patent_core.py`).
+- **Acyclic State Convergence:** Zero circular dependencies; Kahn topological sort length 11; deterministic, mathematically verified non-divergent execution (verified in `tests/test_patent_core.py`).
 - **Computational Scalability:** Linear $\mathcal{O}(N)$ runtime complexity scaling with steady-state throughput of $275\text{ ms} - 945\text{ ms}$ per scenario evaluation; pure state vector memory footprint of $304\text{ bytes}$ ($192\text{ KB}$ for 1,000 scenarios).
 - **Invariant Decision Stability:** $100.0\%$ invariant `REJECT_RESTRUCTURE` classification across $N=50$ stochastic Gaussian perturbation simulations.
 - **Capital Misallocation Avoidance:** Prevents **$\$642,716.18$** in catastrophic enterprise capital loss compared to siloed commercial planning.
@@ -71,8 +71,8 @@ Under Section 3(k) of the Indian Patents Act, 1970, the following elements are *
 DecisionSphere is differentiated by:
 - Decoupling models from rigid database schemas into a unified continuous mathematical state-space vector $S_t \in \mathbb{R}^{24}$.
 - Rigorous integration of Platt probability calibration to eliminate contractual penalty calculation distortion.
-- First-of-a-kind cross-domain operational coupling linking commercial demand volume $\rightarrow$ logistics fulfillment delay risk $\rightarrow$ mandatory workforce overtime $\rightarrow$ calibrated employee turnover risk.
-- Cryptographic runtime model digest verification guaranteeing bit-for-bit reproducibility.
+- Cross-domain operational state coupling linking commercial demand volume $\rightarrow$ logistics fulfillment delay risk $\rightarrow$ mandatory workforce overtime $\rightarrow$ calibrated employee turnover risk under explicitly declared scenario assumptions.
+- Cryptographic runtime model digest verification enforcing bit-for-bit reproducibility.
 
 ### 10. What evidence supports the differentiation?
 - **EXP-P01 / EXP-010:** Empirically proves DecisionSphere prevents $\$642,716.18$ in capital misallocation vs siloed commercial planning.
@@ -100,12 +100,13 @@ A **Provisional Patent Application** should be prepared focusing exclusively on:
 
 ### 14. What should remain confidential?
 Prior to filing a provisional application:
+- The private GitHub repository and all research/patent documents must be treated as confidential project infrastructure and kept private.
 - The exact proprietary source code of `src/scenario/propagation.py`, `src/scenario/graph.py`, and `src/scenario/state.py`.
 - The specific mathematical claim wording and claim dependency hierarchy.
 - The precise architectural interaction between Platt calibration constants and step-loss penalty curves.
 
 ### 15. Is provisional filing reasonable?
-**YES, highly reasonable.** A provisional filing establishes an immediate priority date (protecting the technical core before conference/journal publication) at very low filing cost, providing a 12-month window to either complete the formal PCT/complete application or pivot entirely to academic publication without loss of priority.
+**YES, subject to institutional review.** IP/patent review and, if approved by the institutional IPR/patent professional, provisional filing should occur BEFORE public disclosure of the detailed invention. A provisional filing establishes an immediate priority date at low statutory cost, providing a 12-month window to complete enterprise validation before complete specification filing.
 
 ### 16. What must a patent agent verify?
 1. Formal compliance of claim language with Indian Patent Office CRI Guidelines (2017) to ensure Section 3(k) exclusion is overcome.

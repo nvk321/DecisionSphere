@@ -333,7 +333,7 @@ In direct comparison against conventional siloed commercial decision-making, Dec
 Internal validity concerns the causal correctness of pipeline transformations. While our models achieve high predictive accuracy on tabular holdouts, we explicitly emphasize that predictions represent conditional expectations $\mathbb{E}[Y \mid X]$, not interventional do-calculus $P(Y \mid do(X))$. All coupling constants (`ASM-001` to `ASM-008`) represent operational heuristics that must be calibrated to specific enterprise accounting structures.
 
 \subsection{External Validity & Dataset Coupling}
-A primary scientific limitation of this prototype is its synthetic enterprise testbed: coupling Rossmann retail demand (Germany), DataCo supply chain logistics (Global), and IBM HR workforce data (US). While mathematically harmonized via cycle factors, these benchmarks do not represent observations from a single real-world corporation. Industrial deployment requires re-training estimators on unified enterprise data lakes.
+A primary scientific limitation of this prototype is its synthetic enterprise testbed: coupling Rossmann retail demand (Germany), DataCo supply chain logistics (Global), and IBM HR workforce data (US). These are three separate historical benchmark datasets that do not represent observations from a single real-world corporation, and no universal causal relationships are claimed between them. They are coupled through explicitly declared scenario assumptions (ASM-001 to ASM-008) and operational constants for laboratory validation. Industrial deployment requires re-training estimators on unified enterprise data lakes.
 
 ---
 
