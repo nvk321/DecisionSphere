@@ -12,19 +12,11 @@ This directory contains the formal academic research paper manuscript for the De
 
 ```
 paper/
-├── DecisionSphere_Research_Paper.tex   # Main IEEEtran LaTeX manuscript (15 sections)
-├── references.bib                     # Verified BibTeX bibliography (12 primary citations)
-├── figures/                           # High-resolution 300 DPI publication figures
-│   ├── architecture_overview.png
-│   ├── financial_waterfall.png
-│   ├── dataset_distributions.png
-│   ├── demand_feature_importance.png
-│   ├── supply_chain_roc_pr_calibration.png
-│   ├── workforce_feature_importance.png
-│   ├── workforce_roc_pr_calibration.png
-│   ├── cross_domain_propagation.png
-│   ├── tipping_point_analysis.png
-│   └── ...
+├── DecisionSphere_Conference_Paper.tex # IEEEtran Conference Manuscript (6-8 pages)
+├── DecisionSphere_Journal_Paper.tex    # IEEEtran Journal Manuscript (14-18 pages)
+├── VENUE_SHORTLIST.md                 # Verified Scopus/IEEE venue selection strategy
+├── references.bib                     # Verified BibTeX bibliography (20+ citations)
+├── figures/                           # 300 DPI publication figures (fig1-fig6, etc.)
 ├── tables/                            # LaTeX table modular sources
 └── README.md                          # Documentation and compilation instructions
 ```
